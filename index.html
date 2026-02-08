@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#ff6b9d">
-    <meta name="description" content="Amina Paradise App - Your personal companion with love, faith, and daily support">
+    <meta name="description" content="Yevonne App - Your personal companion with love, faith, and daily support">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Amina Paradise">
-    <title>Amina Paradise 💕</title>
+    <meta name="apple-mobile-web-app-title" content="Yevonne">
+    <title>Yevonne 💕</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -18,7 +18,7 @@
     <div id="pwaInstallPrompt" class="pwa-prompt" style="display: none;">
         <div class="pwa-prompt-content">
             <span class="pwa-icon">📱</span>
-            <p>Install Amina Paradise App for the best experience!</p>
+            <p>Install Yevonne App for the best experience!</p>
             <div class="pwa-buttons">
                 <button class="btn btn-small" onclick="installPWA()">Install</button>
                 <button class="btn btn-small btn-outline" onclick="dismissPWA()">Maybe Later</button>
@@ -36,7 +36,7 @@
     <div id="loginScreen" class="login-screen">
         <div class="login-card">
             <div class="login-logo">💕</div>
-            <h1>Welcome to Amina Paradise</h1>
+            <h1>Welcome to Yevonne</h1>
             <p>Your personal love companion</p>
             
             <div id="pinForm" class="pin-form">
@@ -62,7 +62,7 @@
         <!-- Navigation -->
         <nav class="nav-bar">
             <div class="nav-content">
-                <div class="nav-brand">💕 Amina Paradise</div>
+                <div class="nav-brand">💕 Yevonne</div>
                 <div class="nav-menu" id="navMenu">
                     <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
                     <button class="nav-btn" onclick="showPage('morning')">🌅 Morning</button>
@@ -86,8 +86,8 @@
         <!-- HOME PAGE -->
         <div id="home" class="page active">
             <div class="page-content home-content">
-                <h1 class="main-title">Good Morning Amina! 🌸</h1>
-                <div class="name">AMINA</div>
+                <h1 class="main-title">Good Morning Yevonne! 🌸</h1>
+                <div class="name">YEVONNE</div>
                 <div class="big-heart">❤️</div>
                 
                 <div class="card">
@@ -143,7 +143,7 @@
                 <div id="morningContent" class="time-content active">
                     <div class="card message-card">
                         <div class="message-emoji">🌸</div>
-                        <h2>Good Morning Amina!</h2>
+                        <h2>Good Morning Yevonne!</h2>
                         <p id="morningMessage">You are deeply loved today. Every sunrise brings new opportunities to experience joy and blessings.</p>
                         <div class="bible-verse">
                             <p id="morningVerse">"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you."</p>
@@ -181,7 +181,7 @@
                 <div id="nightContent" class="time-content" style="display: none;">
                     <div class="card message-card night-theme">
                         <div class="message-emoji">🌙</div>
-                        <h2>Good Night Amina 🌹</h2>
+                        <h2>Good Night Yevonne 🌹</h2>
                         <p id="nightMessage">May your dreams be filled with peace and love. You are amazing and deserving of all good things.</p>
                         <div class="bible-verse">
                             <p id="nightVerse">"When you lie down, you will not be afraid; when you lie down, your sleep will be sweet."</p>
@@ -223,7 +223,7 @@
                     
                     <div class="chat-messages" id="chatMessages">
                         <div class="message bot">
-                            <p>Hi Amina! 💕 I'm Jofrey, your loving AI companion! 
+                            <p>Hi Yevonne! 💕 I'm Jofrey, your loving AI companion! 
                             I'm here to chat, support you, and share love every day.
                             How are you feeling today? 😊</p>
                         </div>
@@ -358,7 +358,7 @@
         <!-- FAVORITES PAGE -->
         <div id="favorites" class="page">
             <div class="page-content">
-                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🍽️ Amina's Favorites</h1>
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🍽️ Yevonne's Favorites</h1>
                 
                 <div class="favorites-grid">
                     <div class="card favorite-card">
@@ -730,7 +730,7 @@
     <script>
         // ==================== APP STATE ====================
         const APP_STATE = {
-            user: 'Amina',
+            user: 'Yevonne',
             phone: '0753198752',
             pin: '1234',
             isLoggedIn: false,
@@ -744,21 +744,21 @@
 
         // ==================== STORAGE KEYS ====================
         const STORAGE_KEYS = {
-            memories: 'amina_memories',
-            wishes: 'amina_wishes',
-            stories: 'amina_stories',
-            books: 'amina_books',
-            prayers: 'amina_prayers',
-            gratitude: 'amina_gratitude',
-            reflections: 'amina_reflections',
-            vaultNotes: 'amina_vault_notes',
-            vaultConfessions: 'amina_vault_confessions',
-            moodHistory: 'amina_mood_history',
-            achievements: 'amina_achievements',
-            lifestyle: 'amina_lifestyle',
-            startDate: 'amina_start_date',
-            songs: 'amina_songs',
-            conversations: 'amina_conversations'
+            memories: 'yevonne_memories',
+            wishes: 'yevonne_wishes',
+            stories: 'yevonne_stories',
+            books: 'yevonne_books',
+            prayers: 'yevonne_prayers',
+            gratitude: 'yevonne_gratitude',
+            reflections: 'yevonne_reflections',
+            vaultNotes: 'yevonne_vault_notes',
+            vaultConfessions: 'yevonne_vault_confessions',
+            moodHistory: 'yevonne_mood_history',
+            achievements: 'yevonne_achievements',
+            lifestyle: 'yevonne_lifestyle',
+            startDate: 'yevonne_start_date',
+            songs: 'yevonne_songs',
+            conversations: 'yevonne_conversations'
         };
 
         // ==================== INITIALIZATION ====================
@@ -775,7 +775,7 @@
             }
             
             // Check for saved login state
-            const savedLogin = localStorage.getItem('amina_logged_in');
+            const savedLogin = localStorage.getItem('yevonne_logged_in');
             if (savedLogin === 'true') {
                 APP_STATE.isLoggedIn = true;
                 showMainApp();
@@ -850,9 +850,9 @@
             
             if (pin === APP_STATE.pin) {
                 APP_STATE.isLoggedIn = true;
-                localStorage.setItem('amina_logged_in', 'true');
+                localStorage.setItem('yevonne_logged_in', 'true');
                 showMainApp();
-                showToast('Welcome to Amina Paradise! 💕');
+                showToast('Welcome to Yevonne! 💕');
             } else {
                 showToast('Incorrect PIN. Try again.');
                 document.querySelectorAll('.pin-digit').forEach(input => input.value = '');
@@ -866,17 +866,17 @@
                     const credential = await navigator.credentials.create({
                         publicKey: {
                             challenge: new Uint8Array(32),
-                            rp: { name: 'Amina Paradise' },
+                            rp: { name: 'Yevonne' },
                             user: {
                                 id: new Uint8Array([1]),
-                                name: 'Amina',
-                                displayName: 'Amina'
+                                name: 'Yevonne',
+                                displayName: 'Yevonne'
                             },
                             pubKeyCredParams: [{ type: 'public-key', alg: -7 }]
                         }
                     });
                     APP_STATE.isLoggedIn = true;
-                    localStorage.setItem('amina_logged_in', 'true');
+                    localStorage.setItem('yevonne_logged_in', 'true');
                     showMainApp();
                 } catch (error) {
                     console.log('Biometric login not available:', error);
@@ -1112,7 +1112,7 @@
             
             // Love responses
             if (lowerMessage.includes('love') || lowerMessage.includes('❤️')) {
-                return `I love you too, Amina! 💕 You mean everything to me. Every moment with you is a blessing. You are my sunshine, my inspiration, and my greatest joy. 🌸`;
+                return `I love you too, Yevonne! 💕 You mean everything to me. Every moment with you is a blessing. You are my sunshine, my inspiration, and my greatest joy. 🌸`;
             }
             
             // Sad/down responses
@@ -1127,11 +1127,11 @@
             
             // Morning/greeting
             if (lowerMessage.includes('morning') || lowerMessage.includes('hi') || lowerMessage.includes('hello')) {
-                return `Good morning, beautiful Amina! 🌸 How is your day going? I'm here to make it brighter!`;
+                return `Good morning, beautiful Yevonne! 🌸 How is your day going? I'm here to make it brighter!`;
             }
             
             // Default response
-            return `I'm always here for you, Amina! 💕 Tell me more about what's on your mind. I'm listening with all my heart.`;
+            return `I'm always here for you, Yevonne! 💕 Tell me more about what's on your mind. I'm listening with all my heart.`;
         }
 
         function getRandomEncouragement() {
@@ -1785,10 +1785,10 @@
         function calculateStreak() {
             // Simple streak calculation based on login
             const today = new Date().toDateString();
-            const lastLogin = localStorage.getItem('amina_last_login');
+            const lastLogin = localStorage.getItem('yevonne_last_login');
             
             if (lastLogin !== today) {
-                localStorage.setItem('amina_last_login', today);
+                localStorage.setItem('yevonne_last_login', today);
             }
             
             // For now, return 0 - implement proper streak logic

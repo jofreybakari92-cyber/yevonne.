@@ -1,7 +1,7 @@
-// Amina Paradise App - Service Worker
-const CACHE_NAME = 'amina-paradise-v1';
-const STATIC_CACHE = 'amina-static-v1';
-const DYNAMIC_CACHE = 'amina-dynamic-v1';
+// Yevonne App - Service Worker
+const CACHE_NAME = 'yevonne-v1';
+const STATIC_CACHE = 'yevonne-static-v1';
+const DYNAMIC_CACHE = 'yevonne-dynamic-v1';
 
 // Files to cache immediately
 const STATIC_ASSETS = [
@@ -146,7 +146,7 @@ async function syncMemories() {
 self.addEventListener('push', (event) => {
     console.log('[SW] Push received:', event);
     
-    let data = { title: 'Amina Paradise', body: 'You have a new message!', icon: '/assets/icons/icon-192.png' };
+    let data = { title: 'Yevonne', body: 'You have a new message!', icon: '/assets/icons/icon-192.png' };
     
     if (event.data) {
         try {

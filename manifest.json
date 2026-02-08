@@ -1,7 +1,7 @@
 {
-    "name": "Amina Paradise App",
-    "short_name": "Amina Paradise",
-    "description": "A loving, caring app for Amina - your personal companion with love, faith, and daily support",
+    "name": "Yevonne App",
+    "short_name": "Yevonne",
+    "description": "A loving, caring app for Yevonne - your personal companion with love, faith, and daily support",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#1a1a2e",
@@ -88,14 +88,14 @@
             "sizes": "1280x720",
             "type": "image/png",
             "form_factor": "wide",
-            "label": "Amina Paradise Home Screen"
+            "label": "Yevonne Home Screen"
         },
         {
             "src": "assets/screenshots/mobile-home.png",
             "sizes": "750x1334",
             "type": "image/png",
             "form_factor": "narrow",
-            "label": "Amina Paradise Mobile Home"
+            "label": "Yevonne Mobile Home"
         }
     ],
     "related_applications": [],
