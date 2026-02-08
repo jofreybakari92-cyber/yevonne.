@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Valentine  Yvonne 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            color: #ff6b9d;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 107, 157, 0.2);
+            border: 1px solid #ff6b9d;
+            color: #ffd1dc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #ff6b9d;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Pages Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Floating Hearts */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            color: #ff6b9d;
+            animation: floatUp 8s infinite ease-in;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { bottom: -50px; opacity: 0; transform: translateX(0) rotate(0deg); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { bottom: 110vh; opacity: 0; transform: translateX(100px) rotate(360deg); }
+        }
+
+        /* Sparkles */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Home Page Styles */
+        .home-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b9d, #c06c84, #f67280);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .name {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #ffd1dc;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+            margin: 30px 0;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 107, 157, 0.5); }
+            to { text-shadow: 0 0 40px rgba(255, 107, 157, 1); }
+        }
+
+        .big-heart {
+            font-size: 8rem;
+            animation: heartbeat 1.5s infinite;
+            margin: 40px 0;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.6));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1); }
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+        }
+
+        .card h2 {
+            color: #ff6b9d;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #ffd1dc;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        /* Music Player */
+        .music-player {
+            background: rgba(255, 107, 157, 0.1);
+            border: 2px solid #ff6b9d;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .play-btn {
+            background: #ff6b9d;
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 107, 157, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #ff6b9d;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            color: #ffd1dc;
+            font-size: 0.9rem;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        /* Chat Interface */
+        .chat-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 20px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: rgba(255, 107, 157, 0.2);
+            padding: 20px;
+            border-radius: 18px 18px 0 0;
+            border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: rgba(255, 107, 157, 0.2);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: rgba(192, 108, 132, 0.3);
+            align-self: flex-end;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            padding: 15px 20px;
+        }
+
+        .typing-indicator.show {
+            display: block;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            border-top: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            color: white;
+            padding: 15px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .send-btn {
+            background: #ff6b9d;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        /* Memory Gallery */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .memory-card {
+            background: rgba(255, 107, 157, 0.1);
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff6b9d, #c06c84);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .memory-content {
+            padding: 20px;
+        }
+
+        .delete-btn {
+            background: rgba(255, 107, 157, 0.3);
+            border: 1px solid #ff6b9d;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background: #ff6b9d;
+        }
+
+        /* Wishes */
+        .wish-item {
+            background: rgba(255, 107, 157, 0.1);
+            border-left: 4px solid #ff6b9d;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .wish-item h3 {
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+
+        .wish-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .wish-status.pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffd54f;
+        }
+
+        .wish-status.completed {
+            background: rgba(76, 175, 80, 0.2);
+            color: #81c784;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, #ff6b9d, #c06c84);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            margin: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        .btn-small {
+            padding: 10px 25px;
+            font-size: 1rem;
+        }
+
+        /* Bible Verse */
+        .bible-verse {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(192, 108, 132, 0.2));
+            border: 2px solid #ff6b9d;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .bible-verse p {
+            font-size: 1.4rem;
+            color: #ffd1dc;
+            margin-bottom: 15px;
+        }
+
+        .bible-reference {
+            color: #ff6b9d;
+            font-size: 1.1rem;
+        }
+
+        /* Social Share */
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            background: rgba(255, 107, 157, 0.2);
+            border: 2px solid #ff6b9d;
+            color: #ffd1dc;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Georgia', serif;
+        }
+
+        .share-btn:hover {
+            background: #ff6b9d;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Notification Permission */
+        .notification-prompt {
+            background: rgba(255, 107, 157, 0.15);
+            border: 2px solid #ff6b9d;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Input Fields */
+        input, textarea, select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            margin: 10px 0;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* Story Cards */
+        .story-card {
+            background: rgba(255, 107, 157, 0.1);
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .story-card h3 {
+            color: #ff6b9d;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .story-meta {
+            color: #ffd1dc;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 3px solid #ff6b9d;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 2rem;
+            color: #ff6b9d;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Books Section */
+        .book-card {
+            background: rgba(255, 107, 157, 0.1);
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            display: flex;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            min-width: 60px;
+        }
+
+        .book-info h3 {
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+
+        .book-info p {
+            color: #ffd1dc;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2rem; }
+            .name { font-size: 3rem; }
+            .big-heart { font-size: 5rem; }
+            .nav-content { justify-content: center; }
+            .nav-menu { justify-content: center; width: 100%; }
+            .grid { grid-template-columns: 1fr; }
+            .message { max-width: 85%; }
+            .book-card { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Sparkles -->
+    <div class="sparkles" id="sparkles"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <div class="nav-brand">💕 For Yvonne</div>
+            <div class="nav-menu">
+                <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
+                <button class="nav-btn" onclick="showPage('favorites')">⭐ Favorites</button>
+                <button class="nav-btn" onclick="showPage('stories')">📖 Stories</button>
+                <button class="nav-btn" onclick="showPage('books')">📚 Books</button>
+                <button class="nav-btn" onclick="showPage('memories')">📸 Memories</button>
+                <button class="nav-btn" onclick="showPage('playlist')">🎵 Music</button>
+                <button class="nav-btn" onclick="showPage('wishes')">⭐ Wishes</button>
+                <button class="nav-btn" onclick="showPage('chat')">💬 Chat</button>
+                <button class="nav-btn" onclick="showPage('inspiration')">🌹 Daily</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="page-content home-content">
+            <h1 class="main-title">Will You Be My Valentine?</h1>
+            <div class="name">YVONNE</div>
+            <p style="font-size: 1.8rem; color: #ffd1dc; font-style: italic; margin: 20px 0;">
+                My Adventure Partner, My Love ✈️❤️
+            </p>
+            
+            <div class="big-heart">❤️</div>
+
+            <div class="bible-verse">
+                <p>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud."</p>
+                <div class="bible-reference">- 1 Corinthians 13:4</div>
+            </div>
+
+            <div class="card">
+                <h2>Why You're Special To Me 🌹</h2>
+                <p>
+                    Yvonne, every moment with you is an adventure. Your love for exploring the world 
+                    mirrors how you've explored the depths of my heart. From our sushi dates to scary 
+                    movie nights, you've turned my life into the most beautiful journey I could ever imagine.
+                </p>
+            </div>
+
+            <button class="btn" onclick="showPage('favorites')">Explore Our Love Story 💕</button>
+            <button class="btn" onclick="showPage('chat')">Talk to LoveBot 💬</button>
+        </div>
+    </div>
+
+    <!-- FAVORITES PAGE -->
+    <div id="favorites" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                The Things I Love About You 💫
+            </h1>
+
+            <div class="grid">
+                <div class="card">
+                    <h2>🍣 Sushi Adventures</h2>
+                    <p style="margin: 15px 0;">
+                        Every sushi date with you is magical. The way your eyes light up when trying 
+                        a new roll, how we always fight over the last piece of salmon nigiri, and 
+                        those moments of pure joy when we discover a new favorite spot together.
+                    </p>
+                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <strong style="color: #ff6b9d;">Our Favorites:</strong>
+                        <p style="margin-top: 5px;">🍱 Dragon Roll, Spicy Tuna, Salmon Nigiri</p>
+                        <p style="margin-top: 5px;">🥢 Always sharing, always laughing</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>✈️ Travel Dreams</h2>
+                    <p style="margin: 15px 0;">
+                        Exploring the world with you is my greatest adventure. From planning our next 
+                        destination to getting lost in new cities together, every journey with you 
+                        creates memories I'll treasure forever.
+                    </p>
+                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <strong style="color: #ff6b9d;">Dream Destinations:</strong>
+                        <p style="margin-top: 5px;">🗼 Tokyo - For the ultimate sushi experience</p>
+                        <p style="margin-top: 5px;">🗽 Paris - Romance under the Eiffel Tower</p>
+                        <p style="margin-top: 5px;">🏝️ Santorini - Sunsets together</p>
+                        <p style="margin-top: 5px;">🌴 Bali - Adventure and relaxation</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎬 Horror Movie Nights</h2>
+                    <p style="margin: 15px 0;">
+                        I love how fearless you are watching the scariest movies. Those cozy nights 
+                        on the couch, the way you grab my hand during jump scares, and how we stay 
+                        up discussing plot twists until midnight.
+                    </p>
+                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <strong style="color: #ff6b9d;">Our Watch List:</strong>
+                        <p style="margin-top: 5px;">👻 The Conjuring Series</p>
+                        <p style="margin-top: 5px;">😱 Hereditary</p>
+                        <p style="margin-top: 5px;">🤫 A Quiet Place</p>
+                        <p style="margin-top: 5px;">🏚️ The Haunting of Hill House</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bible-verse">
+                <p>"Two are better than one, because they have a good return for their labor."</p>
+                <div class="bible-reference">- Ecclesiastes 4:9</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOVE STORIES PAGE -->
+    <div id="stories" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Our Love Stories 📖
+            </h1>
+
+            <div class="card">
+                <h2>Add a New Story</h2>
+                <input type="text" placeholder="Story title..." id="storyTitle">
+                <textarea placeholder="Tell our story..." id="storyContent"></textarea>
+                <button class="btn btn-small" onclick="addStory()">Save Story 💕</button>
+                <button class="btn btn-small" onclick="generateStoryIdeas()">Get AI Writing Prompts ✨</button>
+            </div>
+
+            <div id="aiPrompts" style="display: none;" class="card">
+                <h2>AI Story Prompts 💭</h2>
+                <div id="promptsList"></div>
+            </div>
+
+            <div id="storiesList"></div>
+        </div>
+    </div>
+
+    <!-- BOOKS PAGE -->
+    <div id="books" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Books We Love 📚
+            </h1>
+
+            <div class="book-card">
+                <div class="book-icon">📖</div>
+                <div class="book-info">
+                    <h3>The 5 Love Languages - Gary Chapman</h3>
+                    <p>Understanding how we express and receive love. Your love language is Quality Time, 
+                    and I cherish every second we spend together - from sushi dates to movie marathons.</p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-icon">✝️</div>
+                <div class="book-info">
+                    <h3>The Meaning of Marriage - Timothy Keller</h3>
+                    <p>A beautiful exploration of love, commitment, and partnership rooted in faith. 
+                    This book reminds us that our love is part of God's greater plan.</p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-icon">💑</div>
+                <div class="book-info">
+                    <h3>Love Does - Bob Goff</h3>
+                    <p>Love is an action, not just a feeling. Every day with you, I choose to love you 
+                    through adventures, laughter, and all life's moments.</p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-icon">🌍</div>
+                <div class="book-info">
+                    <h3>The Alchemist - Paulo Coelho</h3>
+                    <p>Following your dreams and finding treasure along the way. You are my greatest treasure, 
+                    discovered on this journey called life.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Add a Book We Love</h2>
+                <input type="text" placeholder="Book title..." id="bookTitle">
+                <input type="text" placeholder="Author..." id="bookAuthor">
+                <textarea placeholder="Why we love it..." id="bookNotes"></textarea>
+                <button class="btn btn-small" onclick="addBook()">Add Book 📚</button>
+            </div>
+
+            <div id="customBooks"></div>
+        </div>
+    </div>
+
+    <!-- MEMORIES PAGE -->
+    <div id="memories" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Our Beautiful Memories 📸
+            </h1>
+
+            <div class="memory-grid" id="memoriesGrid"></div>
+
+            <div class="card">
+                <h2>Add a New Memory</h2>
+                <input type="text" placeholder="Memory title..." id="memoryTitle">
+                <input type="text" placeholder="Memory emoji (e.g., 💑, ✈️, 🎬)..." id="memoryEmoji">
+                <textarea placeholder="Describe this beautiful memory..." id="memoryDesc"></textarea>
+                <input type="date" id="memoryDate">
+                <button class="btn" onclick="addMemory()">Save Memory 💕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLAYLIST PAGE -->
+    <div id="playlist" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Our Love Playlist 🎵
+            </h1>
+
+            <div id="musicPlayerContainer"></div>
+
+            <div class="bible-verse">
+                <p>"Place me like a seal over your heart, like a seal on your arm; for love is as strong as death."</p>
+                <div class="bible-reference">- Song of Solomon 8:6</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHES PAGE -->
+    <div id="wishes" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Our Wishes & Dreams ⭐
+            </h1>
+
+            <div class="card">
+                <h2>Make a Wish Together</h2>
+                <p>Share your dreams, goals, and prayers for our future together.</p>
+                <input type="text" placeholder="Your wish or dream..." id="wishInput">
+                <select id="wishCategory">
+                    <option value="travel">✈️ Travel Dreams</option>
+                    <option value="goals">🎯 Life Goals</option>
+                    <option value="prayer">🙏 Prayers</option>
+                    <option value="adventure">🌟 Adventures</option>
+                </select>
+                <button class="btn" onclick="addWish()">Add Wish ⭐</button>
+            </div>
+
+            <div id="wishesList"></div>
+        </div>
+    </div>
+
+    <!-- CHAT PAGE -->
+    <div id="chat" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 30px;">
+                Chat with LoveBot 💬
+            </h1>
+
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2 style="color: #ff6b9d; margin: 0;">💕 LoveBot - Your AI Relationship Assistant</h2>
+                    <p style="margin: 5px 0 0 0; color: #ffd1dc; font-size: 0.9rem;">
+                        Powered by Claude AI - Ask for date ideas, relationship advice, or just chat!
+                    </p>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <p>Hi Yvonne! 💕 I'm LoveBot, powered by AI to help celebrate your amazing relationship! 
+                        I can suggest date ideas, help with gift planning, give relationship advice, or just chat about love. 
+                        What would you like to talk about?</p>
+                    </div>
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." 
+                           onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button class="send-btn" onclick="sendMessage()">Send 💕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAILY INSPIRATION PAGE -->
+    <div id="inspiration" class="page">
+        <div class="page-content">
+            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
+                Daily Love & Inspiration 🌹
+            </h1>
+
+            <div class="notification-prompt">
+                <h2 style="color: #ff6b9d; margin-bottom: 15px;">💌 Daily Love Messages</h2>
+                <p style="margin: 15px 0;">Get a beautiful love message, quote, or Bible verse every day at 9 AM!</p>
+                <button class="btn" onclick="enableNotifications()">Enable Daily Messages 🔔</button>
+                <p id="notificationStatus" style="margin-top: 15px; color: #ffd1dc;"></p>
+            </div>
+
+            <div class="card">
+                <h2>Today's Love Message 💕</h2>
+                <p id="dailyQuote" style="font-size: 1.3rem; font-style: italic; margin: 20px 0; line-height: 1.8;"></p>
+                <button class="btn btn-small" onclick="generateNewQuote()">Get New Message 💫</button>
+            </div>
+
+            <div class="bible-verse">
+                <p id="dailyVerse"></p>
+                <div class="bible-reference" id="verseRef"></div>
+            </div>
+
+            <div class="card">
+                <h2>Share Your Love 💝</h2>
+                <p>Spread the love on social media!</p>
+                <div class="share-buttons">
+                    <button class="share-btn" onclick="shareToSocial('instagram')">📷 Instagram</button>
+                    <button class="share-btn" onclick="shareToSocial('tiktok')">🎵 TikTok</button>
+                    <button class="share-btn" onclick="shareToSocial('facebook')">📘 Facebook</button>
+                    <button class="share-btn" onclick="shareToSocial('twitter')">🐦 Twitter</button>
+                    <button class="share-btn" onclick="shareToSocial('whatsapp')">💬 WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Love Statistics 📊</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
+                        <div style="font-size: 3rem; color: #ff6b9d;" id="daysCounter">0</div>
+                        <p>Days Together</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
+                        <div style="font-size: 3rem; color: #ff6b9d;" id="memoriesCounter">0</div>
+                        <p>Memories Created</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
+                        <div style="font-size: 3rem; color: #ff6b9d;" id="wishesCounter">0</div>
+                        <p>Dreams Together</p>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
+                        <div style="font-size: 3rem; color: #ff6b9d;">∞</div>
+                        <p>Love Forever</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Modal -->
+    <div id="memoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMemoryModal()">×</span>
+            <div id="memoryModalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== DATA STORAGE ====================
+        const STORAGE_KEYS = {
+            memories: 'yvonne_memories',
+            wishes: 'yvonne_wishes',
+            stories: 'yvonne_stories',
+            books: 'yvonne_books',
+            startDate: 'yvonne_start_date',
+            songs: 'yvonne_songs'
+        };
+
+        // Initialize data
+        function initializeData() {
+            if (!localStorage.getItem(STORAGE_KEYS.startDate)) {
+                localStorage.setItem(STORAGE_KEYS.startDate, '2024-01-14'); // Example start date
+            }
+
+            if (!localStorage.getItem(STORAGE_KEYS.memories)) {
+                const defaultMemories = [
+                    {
+                        id: Date.now(),
+                        title: 'First Date',
+                        emoji: '💑',
+                        description: 'The night everything changed. Sushi & endless conversation.',
+                        date: '2024-01-14'
+                    },
+                    {
+                        id: Date.now() + 1,
+                        title: 'First Trip Together',
+                        emoji: '✈️',
+                        description: 'Our adventure began. New places, new memories.',
+                        date: '2024-03-20'
+                    },
+                    {
+                        id: Date.now() + 2,
+                        title: 'Movie Marathon',
+                        emoji: '🎬',
+                        description: 'Scary movies and sweet moments all night long.',
+                        date: '2024-05-10'
+                    }
+                ];
+                localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(defaultMemories));
+            }
+
+            if (!localStorage.getItem(STORAGE_KEYS.wishes)) {
+                const defaultWishes = [
+                    {
+                        id: Date.now(),
+                        wish: 'Visit Tokyo Together',
+                        category: 'travel',
+                        status: 'pending',
+                        date: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 1,
+                        wish: 'Build Our Dream Home',
+                        category: 'goals',
+                        status: 'pending',
+                        date: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 2,
+                        wish: 'Grow Together in Faith',
+                        category: 'prayer',
+                        status: 'pending',
+                        date: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(defaultWishes));
+            }
+
+            if (!localStorage.getItem(STORAGE_KEYS.stories)) {
+                const defaultStories = [
+                    {
+                        id: Date.now(),
+                        title: 'Our First Sushi Date',
+                        content: 'It was a rainy evening when we decided to try that new sushi place. Little did we know it would become "our place." We laughed, we shared, and I knew then that you were special.',
+                        date: new Date('2024-01-14').toISOString()
+                    },
+                    {
+                        id: Date.now() + 1,
+                        title: 'The Horror Movie That Brought Us Closer',
+                        content: 'You said you loved scary movies, so I picked the scariest one I could find. When you grabbed my hand during that jump scare, my heart skipped - and it wasn\'t from the movie.',
+                        date: new Date('2024-02-10').toISOString()
+                    }
+                ];
+                localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(defaultStories));
+            }
+
+            if (!localStorage.getItem(STORAGE_KEYS.songs)) {
+                const defaultSongs = [
+                    {
+                        id: 1,
+                        title: 'Perfect',
+                        artist: 'Ed Sheeran',
+                        note: 'Our song - the one that reminds me of you',
+                        lyrics: 'I found a love, for me...'
+                    },
+                    {
+                        id: 2,
+                        title: 'All of Me',
+                        artist: 'John Legend',
+                        note: 'Because you have all of me',
+                        lyrics: 'Cause all of me loves all of you...'
+                    },
+                    {
+                        id: 3,
+                        title: 'Thinking Out Loud',
+                        artist: 'Ed Sheeran',
+                        note: "I'll love you till we're 70",
+                        lyrics: 'When your legs don\'t work like they used to before...'
+                    },
+                    {
+                        id: 4,
+                        title: 'A Thousand Years',
+                        artist: 'Christina Perri',
+                        note: 'I have loved you for a thousand years',
+                        lyrics: 'I have died every day waiting for you...'
+                    }
+                ];
+                localStorage.setItem(STORAGE_KEYS.songs, JSON.stringify(defaultSongs));
+            }
+        }
+
+        // ==================== ANIMATIONS ====================
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.width = (Math.random() * 3 + 1) + 'px';
+            sparkle.style.height = sparkle.style.width;
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            document.getElementById('sparkles').appendChild(sparkle);
+        }
+
+        function celebrate() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 50);
+            }
+        }
+
+        // Initialize animations
+        setInterval(createHeart, 300);
+        for (let i = 0; i < 50; i++) {
+            createSparkle();
+        }
+
+        // ==================== NAVIGATION ====================
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            event.target.classList.add('active');
+
+            // Load page-specific content
+            if (pageId === 'memories') loadMemories();
+            if (pageId === 'wishes') loadWishes();
+            if (pageId === 'stories') loadStories();
+            if (pageId === 'playlist') loadMusicPlayer();
+            if (pageId === 'inspiration') {
+                generateNewQuote();
+                updateStats();
+            }
+        }
+
+        // ==================== MEMORIES ====================
+        function loadMemories() {
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            const grid = document.getElementById('memoriesGrid');
+            grid.innerHTML = '';
+
+            memories.forEach(memory => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.innerHTML = `
+                    <div class="memory-image">${memory.emoji || '❤️'}</div>
+                    <div class="memory-content">
+                        <h3 style="color: #ff6b9d;">${memory.title}</h3>
+                        <p>${memory.description}</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">${new Date(memory.date).toLocaleDateString()}</p>
+                        <button class="delete-btn" onclick="deleteMemory(${memory.id})">Delete</button>
+                    </div>
+                `;
+                card.onclick = (e) => {
+                    if (!e.target.classList.contains('delete-btn')) {
+                        viewMemory(memory);
+                    }
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        function addMemory() {
+            const title = document.getElementById('memoryTitle').value;
+            const emoji = document.getElementById('memoryEmoji').value;
+            const description = document.getElementById('memoryDesc').value;
+            const date = document.getElementById('memoryDate').value;
+
+            if (!title || !description) {
+                alert('Please fill in title and description!');
+                return;
+            }
+
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            memories.unshift({
+                id: Date.now(),
+                title,
+                emoji: emoji || '❤️',
+                description,
+                date: date || new Date().toISOString()
+            });
+
+            localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(memories));
+            
+            document.getElementById('memoryTitle').value = '';
+            document.getElementById('memoryEmoji').value = '';
+            document.getElementById('memoryDesc').value = '';
+            document.getElementById('memoryDate').value = '';
+
+            loadMemories();
+            celebrate();
+        }
+
+        function deleteMemory(id) {
+            if (confirm('Are you sure you want to delete this memory?')) {
+                let memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+                memories = memories.filter(m => m.id !== id);
+                localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(memories));
+                loadMemories();
+            }
+        }
+
+        function viewMemory(memory) {
+            const modal = document.getElementById('memoryModal');
+            const content = document.getElementById('memoryModalContent');
+            content.innerHTML = `
+                <h1 style="color: #ff6b9d; margin: 20px 0;">${memory.emoji} ${memory.title}</h1>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #ffd1dc; margin: 20px 0;">${memory.description}</p>
+                <p style="color: #ff6b9d; margin-top: 20px;">📅 ${new Date(memory.date).toLocaleDateString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })}</p>
+            `;
+            modal.classList.add('show');
+        }
+
+        function closeMemoryModal() {
+            document.getElementById('memoryModal').classList.remove('show');
+        }
+
+        // ==================== WISHES ====================
+        function loadWishes() {
+            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+            const list = document.getElementById('wishesList');
+            list.innerHTML = '';
+
+            const categoryIcons = {
+                'travel': '✈️',
+                'goals': '🎯',
+                'prayer': '🙏',
+                'adventure': '🌟'
+            };
+
+            const categoryNames = {
+                'travel': 'Travel Dreams',
+                'goals': 'Life Goals',
+                'prayer': 'Prayers',
+                'adventure': 'Adventures'
+            };
+
+            wishes.forEach(wish => {
+                const item = document.createElement('div');
+                item.className = 'wish-item';
+                item.innerHTML = `
+                    <h3>${categoryIcons[wish.category]} ${wish.wish}</h3>
+                    <p>Added on ${new Date(wish.date).toLocaleDateString()}</p>
+                    <small style="color: #ff6b9d;">${categoryNames[wish.category]}</small>
+                    <div style="margin-top: 10px;">
+                        <span class="wish-status ${wish.status}">${wish.status === 'completed' ? '✅ Completed' : '⏳ Pending'}</span>
+                        ${wish.status === 'pending' ? 
+                            `<button class="btn btn-small" style="margin-left: 10px;" onclick="completeWish(${wish.id})">Mark Complete ✓</button>` : 
+                            ''}
+                        <button class="delete-btn" style="margin-left: 10px;" onclick="deleteWish(${wish.id})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function addWish() {
+            const wishInput = document.getElementById('wishInput').value;
+            const category = document.getElementById('wishCategory').value;
+
+            if (!wishInput) {
+                alert('Please enter a wish!');
+                return;
+            }
+
+            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+            wishes.unshift({
+                id: Date.now(),
+                wish: wishInput,
+                category,
+                status: 'pending',
+                date: new Date().toISOString()
+            });
+
+            localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
+            document.getElementById('wishInput').value = '';
+            loadWishes();
+            celebrate();
+        }
+
+        function completeWish(id) {
+            let wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+            wishes = wishes.map(w => {
+                if (w.id === id) w.status = 'completed';
+                return w;
+            });
+            localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
+            loadWishes();
+            celebrate();
+        }
+
+        function deleteWish(id) {
+            if (confirm('Are you sure you want to delete this wish?')) {
+                let wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+                wishes = wishes.filter(w => w.id !== id);
+                localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
+                loadWishes();
+            }
+        }
+
+        // ==================== STORIES ====================
+        function loadStories() {
+            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
+            const list = document.getElementById('storiesList');
+            list.innerHTML = '';
+
+            stories.forEach(story => {
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.innerHTML = `
+                    <h3>${story.title}</h3>
+                    <div class="story-meta">
+                        📅 ${new Date(story.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    </div>
+                    <p style="color: #ffd1dc; line-height: 1.8;">${story.content}</p>
+                    <div class="share-buttons" style="margin-top: 20px;">
+                        <button class="share-btn" onclick="shareStory(${story.id}, 'instagram')">📷 Share</button>
+                        <button class="delete-btn" onclick="deleteStory(${story.id})">Delete</button>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function addStory() {
+            const title = document.getElementById('storyTitle').value;
+            const content = document.getElementById('storyContent').value;
+
+            if (!title || !content) {
+                alert('Please fill in both title and content!');
+                return;
+            }
+
+            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
+            stories.unshift({
+                id: Date.now(),
+                title,
+                content,
+                date: new Date().toISOString()
+            });
+
+            localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(stories));
+            
+            document.getElementById('storyTitle').value = '';
+            document.getElementById('storyContent').value = '';
+            
+            loadStories();
+            celebrate();
+        }
+
+        function deleteStory(id) {
+            if (confirm('Are you sure you want to delete this story?')) {
+                let stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
+                stories = stories.filter(s => s.id !== id);
+                localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(stories));
+                loadStories();
+            }
+        }
+
+        function shareStory(id, platform) {
+            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
+            const story = stories.find(s => s.id === id);
+            if (story) {
+                const text = `${story.title}\n\n${story.content}\n\n#LoveStory #ValentinesDay`;
+                shareToSocial(platform, text);
+            }
+        }
+
+        function generateStoryIdeas() {
+            const prompts = [
+                "💡 Write about the moment you knew Yvonne was special",
+                "💡 Describe your favorite adventure together",
+                "💡 Tell the story of a perfect day you spent together",
+                "💡 Write about a challenge you overcame as a couple",
+                "💡 Describe what you love most about Yvonne's personality",
+                "💡 Share a funny or embarrassing moment from your relationship",
+                "💡 Write about your dreams for the future together",
+                "💡 Describe a tradition you've created together"
+            ];
+
+            const promptsList = document.getElementById('promptsList');
+            promptsList.innerHTML = prompts.map(p => 
+                `<p style="padding: 15px; background: rgba(255,107,157,0.1); border-radius: 10px; margin: 10px 0; cursor: pointer;" 
+                    onclick="usePrompt('${p.replace('💡 ', '')}')">${p}</p>`
+            ).join('');
+            
+            document.getElementById('aiPrompts').style.display = 'block';
+        }
+
+        function usePrompt(prompt) {
+            document.getElementById('storyTitle').value = prompt;
+            document.getElementById('storyContent').focus();
+            window.scrollTo(0, 0);
+        }
+
+        // ==================== BOOKS ====================
+        function addBook() {
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+            const notes = document.getElementById('bookNotes').value;
+
+            if (!title || !author) {
+                alert('Please fill in title and author!');
+                return;
+            }
+
+            const books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
+            books.unshift({
+                id: Date.now(),
+                title,
+                author,
+                notes
+            });
+
+            localStorage.setItem(STORAGE_KEYS.books, JSON.stringify(books));
+            
+            document.getElementById('bookTitle').value = '';
+            document.getElementById('bookAuthor').value = '';
+            document.getElementById('bookNotes').value = '';
+
+            loadCustomBooks();
+            celebrate();
+        }
+
+        function loadCustomBooks() {
+            const books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
+            const container = document.getElementById('customBooks');
+            container.innerHTML = '';
+
+            books.forEach(book => {
+                const card = document.createElement('div');
+                card.className = 'book-card';
+                card.innerHTML = `
+                    <div class="book-icon">📘</div>
+                    <div class="book-info">
+                        <h3>${book.title} - ${book.author}</h3>
+                        <p>${book.notes}</p>
+                        <button class="delete-btn" onclick="deleteBook(${book.id})">Delete</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function deleteBook(id) {
+            if (confirm('Are you sure you want to delete this book?')) {
+                let books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
+                books = books.filter(b => b.id !== id);
+                localStorage.setItem(STORAGE_KEYS.books, JSON.stringify(books));
+                loadCustomBooks();
+            }
+        }
+
+        // ==================== MUSIC PLAYER ====================
+        let currentlyPlaying = null;
+        let currentSongIndex = -1;
+        let songProgress = {};
+
+        function loadMusicPlayer() {
+            const songs = JSON.parse(localStorage.getItem(STORAGE_KEYS.songs) || '[]');
+            const container = document.getElementById('musicPlayerContainer');
+            container.innerHTML = '';
+
+            songs.forEach((song, index) => {
+                const player = document.createElement('div');
+                player.className = 'music-player';
+                player.innerHTML = `
+                    <h3 style="color: #ff6b9d; margin-bottom: 10px;">🎵 ${song.title} - ${song.artist}</h3>
+                    <p style="color: #ffd1dc; font-size: 0.9rem;">${song.note}</p>
+                    <div class="music-controls">
+                        <button class="play-btn" onclick="togglePlay(${index})" id="playBtn${index}">▶️</button>
+                        <div class="progress-bar" onclick="seekSong(event, ${index})" id="progressBar${index}">
+                            <div class="progress-fill" id="progressFill${index}"></div>
+                        </div>
+                        <span class="time-display" id="timeDisplay${index}">0:00 / 3:30</span>
+                    </div>
+                `;
+                container.appendChild(player);
+            });
+        }
+
+        function togglePlay(index) {
+            const btn = document.getElementById(`playBtn${index}`);
+            
+            // Stop currently playing song
+            if (currentlyPlaying !== null && currentlyPlaying !== index) {
+                const prevBtn = document.getElementById(`playBtn${currentlyPlaying}`);
+                prevBtn.textContent = '▶️';
+                prevBtn.style.background = '#ff6b9d';
+                clearInterval(songProgress[currentlyPlaying]);
+            }
+
+            if (currentlyPlaying === index) {
+                // Pause current song
+                btn.textContent = '▶️';
+                btn.style.background = '#ff6b9d';
+                clearInterval(songProgress[index]);
+                currentlyPlaying = null;
+            } else {
+                // Play new song
+                btn.textContent = '⏸️';
+                btn.style.background = '#c06c84';
+                currentlyPlaying = index;
+                startSongProgress(index);
+            }
+        }
+
+        function startSongProgress(index) {
+            let progress = 0;
+            const duration = 210; // 3:30 in seconds
+            
+            songProgress[index] = setInterval(() => {
+                progress += 0.5;
+                const percent = (progress / duration) * 100;
+                
+                document.getElementById(`progressFill${index}`).style.width = percent + '%';
+                
+                const currentTime = Math.floor(progress);
+                const minutes = Math.floor(currentTime / 60);
+                const seconds = currentTime % 60;
+                document.getElementById(`timeDisplay${index}`).textContent = 
+                    `${minutes}:${seconds.toString().padStart(2, '0')} / 3:30`;
+
+                if (progress >= duration) {
+                    clearInterval(songProgress[index]);
+                    document.getElementById(`playBtn${index}`).textContent = '▶️';
+                    document.getElementById(`playBtn${index}`).style.background = '#ff6b9d';
+                    currentlyPlaying = null;
+                }
+            }, 500);
+        }
+
+        function seekSong(event, index) {
+            const bar = event.currentTarget;
+            const rect = bar.getBoundingClientRect();
+            const percent = ((event.clientX - rect.left) / rect.width) * 100;
+            document.getElementById(`progressFill${index}`).style.width = percent + '%';
+        }
+
+        // ==================== CHAT BOT ====================
+        const chatContext = {
+            userName: 'Yvonne',
+            favorites: {
+                food: 'sushi',
+                activities: ['traveling', 'horror movies'],
+                places: ['Tokyo', 'Paris', 'Santorini', 'Bali']
+            }
+        };
+
+        const aiResponses = {
+            greeting: [
+                "Hey there! 💕 How can I help you celebrate your amazing relationship today?",
+                "Hi! 💖 Ready to plan something special for Yvonne?",
+                "Hello! 🌹 What would you like to chat about?"
+            ],
+            dateIdeas: [
+                "How about a sushi-making class together? 🍣 You could learn to make your favorite rolls!",
+                "Plan a horror movie marathon with all her favorites, complete with cozy blankets and snacks! 🎬",
+                "Surprise her with a weekend getaway to a place on your bucket list! ✈️",
+                "Book a romantic dinner at that new sushi restaurant you've been wanting to try! 🍱",
+                "Create a scavenger hunt leading to different places that are special to you both! 💝",
+                "Plan a picnic at sunset with her favorite foods and a playlist of your songs! 🌅"
+            ],
+            travel: [
+                "Tokyo would be perfect for Yvonne! Amazing sushi AND unique experiences! 🗼🍣",
+                "Paris is always romantic - imagine strolling the streets hand in hand! 🗼💕",
+                "Bali offers both adventure and relaxation - perfect for you two! 🏝️",
+                "Santorini's sunsets would be breathtaking to share together! 🌅"
+            ],
+            movies: [
+                "If she loves The Conjuring, try 'The Conjuring 2' or 'Annabelle' for more scares! 👻",
+                "For something really intense, check out 'Midsommar' or 'The Wailing'! 😱",
+                "Classic horror: 'The Exorcist' or 'Rosemary's Baby' are must-watches! 🎃",
+                "'Train to Busan' is a great zombie thriller if you want something different! 🚂"
+            ],
+            gifts: [
+                "A personalized photo album of your memories together would be so meaningful! 📸",
+                "Plan a surprise trip to Tokyo - she'd love experiencing the sushi culture! ✈️",
+                "Custom jewelry with coordinates of your special places! 💎",
+                "A 'horror movie date night' subscription box with movie picks and snacks! 🎬",
+                "Cooking class for making sushi at home together! 🍱"
+            ],
+            love: [
+                "The best relationships grow stronger through shared adventures - keep exploring together! 💕",
+                "Quality time is the greatest gift - whether it's sushi dates or movie nights! ⏰",
+                "Your shared interests create the perfect foundation for lasting love! 💝",
+                "Keep making memories together - they're the treasures of a lifetime! 🌹"
+            ]
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesDiv = document.getElementById('chatMessages');
+            const typingIndicator = document.getElementById('typingIndicator');
+            
+            if (input.value.trim() === '') return;
+
+            const userMessage = input.value.toLowerCase();
+
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = '<p>' + input.value + '</p>';
+            messagesDiv.appendChild(userMsg);
+            input.value = '';
+
+            // Show typing indicator
+            typingIndicator.classList.add('show');
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // Generate AI response
+            setTimeout(() => {
+                typingIndicator.classList.remove('show');
+                
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                
+                let response = generateAIResponse(userMessage);
+                
+                botMsg.innerHTML = '<p>' + response + '</p>';
+                messagesDiv.appendChild(botMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1500);
+        }
+
+        function generateAIResponse(message) {
+            // Simple keyword-based AI responses
+            if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                return aiResponses.greeting[Math.floor(Math.random() * aiResponses.greeting.length)];
+            }
+            
+            if (message.includes('date') || message.includes('plan') || message.includes('idea')) {
+                return aiResponses.dateIdeas[Math.floor(Math.random() * aiResponses.dateIdeas.length)];
+            }
+            
+            if (message.includes('travel') || message.includes('trip') || message.includes('vacation')) {
+                return aiResponses.travel[Math.floor(Math.random() * aiResponses.travel.length)];
+            }
+            
+            if (message.includes('movie') || message.includes('horror') || message.includes('watch')) {
+                return aiResponses.movies[Math.floor(Math.random() * aiResponses.movies.length)];
+            }
+            
+            if (message.includes('gift') || message.includes('present') || message.includes('surprise')) {
+                return aiResponses.gifts[Math.floor(Math.random() * aiResponses.gifts.length)];
+            }
+            
+            if (message.includes('sushi')) {
+                return "Sushi is such a great shared passion! 🍣 Have you tried making it together at home? It's a fun date activity and you learn something new together! Or plan a sushi restaurant tour - visit different places and rate them! 🍱";
+            }
+
+            if (message.includes('love') || message.includes('relationship')) {
+                return aiResponses.love[Math.floor(Math.random() * aiResponses.love.length)];
+            }
+
+            // Default responses
+            const defaultResponses = [
+                "That's wonderful! Yvonne is lucky to have someone who cares so much! 💕",
+                "Tell me more! I'm here to help make your relationship even more special! 💖",
+                "I love that! What else would you like to know about? 🌹",
+                "Great question! Based on what I know about Yvonne, she'd probably love something involving travel or good food! ✈️🍣",
+                "Remember, the best gifts come from the heart. What makes Yvonne smile? 😊"
+            ];
+            
+            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+        }
+
+        // ==================== DAILY INSPIRATION ====================
+        const loveQuotes = [
+            "Yvonne, you make every adventure more beautiful just by being there. Every sunrise is brighter, every sushi roll tastes better, and every scary movie is more thrilling when I'm with you.",
+            "Your smile is my favorite view, better than any travel destination. When you laugh, the whole world lights up, and I fall in love all over again.",
+            "Every sushi date with you is a journey to happiness. It's not just about the food - it's about the conversations, the laughter, and the way we can make ordinary moments extraordinary together.",
+            "I love how you're brave enough to watch horror movies but sweet enough to hold my hand. Your strength and tenderness inspire me every day.",
+            "Traveling the world means nothing without you by my side. Every destination is just a place until we create memories there together.",
+            "You're not just my Valentine - you're my forever adventure. Every day with you is a new chapter in the greatest story ever told.",
+            "Every day with you is a new page in our love story, and I can't wait to see what adventures tomorrow brings.",
+            "Yvonne, you are my favorite hello and my hardest goodbye. Distance means nothing when someone means everything.",
+            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.",
+            "You are my today and all of my tomorrows. Every moment spent with you is a moment I treasure.",
+            "I choose you. And I'll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you.",
+            "Together we create our own paradise - whether it's a sushi bar, a movie theater, or anywhere in the world. Home is wherever you are."
+        ];
+
+        const bibleVerses = [
+            { 
+                text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", 
+                ref: "1 Corinthians 13:4" 
+            },
+            { 
+                text: "Above all, love each other deeply, because love covers over a multitude of sins.", 
+                ref: "1 Peter 4:8" 
+            },
+            { 
+                text: "There is no fear in love. But perfect love drives out fear.", 
+                ref: "1 John 4:18" 
+            },
+            { 
+                text: "Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be stilled; where there is knowledge, it will pass away.", 
+                ref: "1 Corinthians 13:8" 
+            },
+            { 
+                text: "Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up.", 
+                ref: "Ecclesiastes 4:9-10" 
+            },
+            { 
+                text: "Place me like a seal over your heart, like a seal on your arm; for love is as strong as death.", 
+                ref: "Song of Solomon 8:6" 
+            },
+            { 
+                text: "Therefore what God has joined together, let no one separate.", 
+                ref: "Mark 10:9" 
+            },
+            { 
+                text: "And now these three remain: faith, hope and love. But the greatest of these is love.", 
+                ref: "1 Corinthians 13:13" 
+            }
+        ];
+
+        function generateNewQuote() {
+            const quote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+            const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
+            
+            document.getElementById('dailyQuote').textContent = quote;
+            document.getElementById('dailyVerse').textContent = verse.text;
+            document.getElementById('verseRef').textContent = '- ' + verse.ref;
+            
+            celebrate();
+        }
+
+        // ==================== NOTIFICATIONS ====================
+        function enableNotifications() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        document.getElementById('notificationStatus').textContent = 
+                            '✅ Daily love messages enabled! You\'ll receive beautiful messages every day at 9 AM! 💕';
+                        
+                        // Show sample notification
+                        new Notification('💕 Daily Love Message', {
+                            body: 'Good morning! Here\'s your daily dose of love from your Valentine app!',
+                            icon: '❤️'
+                        });
+
+                        // Store notification preference
+                        localStorage.setItem('notifications_enabled', 'true');
+                        localStorage.setItem('notification_time', '09:00');
+                        
+                        celebrate();
+                    } else {
+                        document.getElementById('notificationStatus').textContent = 
+                            '❌ Notifications blocked. Please enable them in your browser settings.';
+                    }
+                });
+            } else {
+                document.getElementById('notificationStatus').textContent = 
+                    '💕 Notifications not supported on this device, but the love is still here!';
+            }
+        }
+
+        // Check and send daily notification
+        function checkDailyNotification() {
+            if (localStorage.getItem('notifications_enabled') === 'true') {
+                const now = new Date();
+                const lastNotification = localStorage.getItem('last_notification_date');
+                const today = now.toDateString();
+
+                if (lastNotification !== today && now.getHours() === 9) {
+                    const quote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
+                    
+                    if (Notification.permission === 'granted') {
+                        new Notification('💕 Daily Love Message for Yvonne', {
+                            body: quote.substring(0, 100) + '...',
+                            icon: '❤️'
+                        });
+                        
+                        localStorage.setItem('last_notification_date', today);
+                    }
+                }
+            }
+        }
+
+        // Check for notifications every minute
+        setInterval(checkDailyNotification, 60000);
+
+        // ==================== SOCIAL SHARING ====================
+        function shareToSocial(platform, customText = '') {
+            const text = customText || `❤️ Check out this amazing Valentine's message! 💕 #ValentinesDay #Love #Yvonne`;
+            const url = window.location.href;
+
+            const shareLinks = {
+                instagram: `https://www.instagram.com/`, // Instagram doesn't support direct sharing via URL
+                tiktok: `https://www.tiktok.com/`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`,
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`
+            };
+
+            if (platform === 'instagram' || platform === 'tiktok') {
+                alert(`📱 To share on ${platform}:\n\n1. Take a screenshot of this page\n2. Open ${platform}\n3. Create a new post\n4. Upload the screenshot\n5. Add your caption!\n\nSuggested caption: ${text}`);
+            } else if (shareLinks[platform]) {
+                window.open(shareLinks[platform], '_blank', 'width=600,height=400');
+            }
+        }
+
+        // ==================== STATISTICS ====================
+        function updateStats() {
+            // Calculate days together
+            const startDate = new Date(localStorage.getItem(STORAGE_KEYS.startDate));
+            const today = new Date();
+            const daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+            
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+
+            // Animate counters
+            animateCounter('daysCounter', daysTogether);
+            animateCounter('memoriesCounter', memories.length);
+            animateCounter('wishesCounter', wishes.length);
+        }
+
+        function animateCounter(elementId, target) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let current = 0;
+            const increment = Math.ceil(target / 50);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = current;
+            }, 30);
+        }
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeData();
+            generateNewQuote();
+            loadMemories();
+            loadWishes();
+            loadStories();
+            loadCustomBooks();
+            loadMusicPlayer();
+            updateStats();
+
+            // Check for notification permission on load
+            if (localStorage.getItem('notifications_enabled') === 'true') {
+                document.getElementById('notificationStatus').textContent = 
+                    '✅ Daily notifications are enabled!';
+            }
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('memoryModal');
+            if (event.target === modal) {
+                closeMemoryModal();
+            }
+        }
+    </script>
+</body>
+</html>
