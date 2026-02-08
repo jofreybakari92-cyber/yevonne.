@@ -1,4 +1,4 @@
-# Valentine's Website for Yvonne 💕
+# Valentine's Website for Amina 💕
 
 A beautiful, interactive Valentine's Day website celebrating the love between two people.
 
@@ -27,7 +27,7 @@ A beautiful, interactive Valentine's Day website celebrating the love between tw
 ## Project Structure
 
 ```
-yevonne/
+amina/
 ├── index.html           # Main HTML file
 ├── README.md            # This file
 ├── css/
@@ -83,7 +83,7 @@ Edit the HTML file to customize:
 1. Push this repository to GitHub
 2. Go to Settings → Pages
 3. Set Source to "main" branch
-4. Your site will be live at: `https://YOUR-USERNAME.github.io/yevonne/`
+4. Your site will be live at: `https://YOUR-USERNAME.github.io/amina/`
 
 ### Netlify (Easy)
 1. Go to netlify.com
@@ -93,4 +93,5 @@ Edit the HTML file to customize:
 
 ## Credits
 
-Created with ❤️ for Yvonne
+Created with ❤️ for Amina
+# Amina
