@@ -28,17 +28,19 @@ A beautiful, interactive Valentine's Day website celebrating the love between tw
 
 ```
 yevonne/
-├── landing page.html    # Main HTML file
+├── index.html           # Main HTML file
 ├── README.md            # This file
 ├── css/
-│   └── styles.css       # All styles and animations
-└── js/
-    └── main.js          # All JavaScript functionality
+│   └── style.css        # All styles and animations
+├── js/
+│   └── main.js          # All JavaScript functionality
+└── assets/
+    └── images/          # Image assets (optional)
 ```
 
 ## How to Use
 
-1. Open `landing page.html` in any web browser
+1. Open `index.html` in any web browser
 2. Navigate through pages using the top navigation bar
 3. Add memories, wishes, stories, books, and songs
 4. Chat with LoveBot for date ideas and relationship advice
@@ -74,6 +76,20 @@ Edit the HTML file to customize:
 - Firefox (full support)
 - Safari (full support)
 - Mobile browsers (responsive)
+
+## Hosting
+
+### GitHub Pages (Free)
+1. Push this repository to GitHub
+2. Go to Settings → Pages
+3. Set Source to "main" branch
+4. Your site will be live at: `https://YOUR-USERNAME.github.io/yevonne/`
+
+### Netlify (Easy)
+1. Go to netlify.com
+2. "Add new site" → "Import from GitHub"
+3. Select your repository
+4. Done! Live instantly
 
 ## Credits
 
