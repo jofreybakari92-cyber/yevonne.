@@ -1,0 +1,107 @@
+{
+    "name": "Amina Paradise App",
+    "short_name": "Amina Paradise",
+    "description": "A loving, caring app for Amina - your personal companion with love, faith, and daily support",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1a2e",
+    "theme_color": "#ff6b9d",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "assets/icons/icon-72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "assets/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "categories": ["lifestyle", "entertainment", "social"],
+    "shortcuts": [
+        {
+            "name": "Chat with Jofrey",
+            "short_name": "Jofrey",
+            "description": "Chat with your AI companion",
+            "url": "/?page=chat",
+            "icons": [{ "src": "assets/icons/chat-icon.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Morning Message",
+            "short_name": "Morning",
+            "description": "View today's morning message",
+            "url": "/?page=daily",
+            "icons": [{ "src": "assets/icons/sun-icon.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "My Memories",
+            "short_name": "Memories",
+            "description": "View our beautiful memories",
+            "url": "/?page=memories",
+            "icons": [{ "src": "assets/icons/memory-icon.png", "sizes": "192x192" }]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/screenshots/home.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Amina Paradise Home Screen"
+        },
+        {
+            "src": "assets/screenshots/mobile-home.png",
+            "sizes": "750x1334",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Amina Paradise Mobile Home"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "display_override": ["window-controls-overlay", "standalone", "browser"],
+    "launch_handler": {
+        "client_mode": ["navigate-existing", "auto"]
+    }
+}

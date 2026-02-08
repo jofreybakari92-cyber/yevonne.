@@ -1,11 +1,11 @@
 // ==================== STORAGE KEYS ====================
 const STORAGE_KEYS = {
-    memories: 'yvonne_memories',
-    wishes: 'yvonne_wishes',
-    stories: 'yvonne_stories',
-    books: 'yvonne_books',
-    songs: 'yvonne_songs',
-    startDate: 'yvonne_start_date'
+    memories: 'amina_memories',
+    wishes: 'amina_wishes',
+    stories: 'amina_stories',
+    books: 'amina_books',
+    songs: 'amina_songs',
+    startDate: 'amina_start_date'
 };
 
 // ==================== INITIALIZATION ====================
@@ -354,12 +354,12 @@ function generateStoryIdeas() {
     const prompts = [
         "💡 Tell the story of how we first met",
         "💡 Write about our first date",
-        "💡 Describe what makes Yvonne unique",
+        "💡 Describe what makes Amina unique",
         "💡 Share a favorite memory together",
         "💡 Write about our travel dreams",
-        "💡 Describe a perfect day with Yvonne",
+        "💡 Describe a perfect day with Amina",
         "💡 Tell the story of a surprise moment",
-        "💡 Write about what you love most about Yvonne",
+        "💡 Write about what you love most about Amina",
         "💡 Share a funny moment from our relationship",
         "💡 Describe our future together"
     ];
@@ -541,7 +541,7 @@ function seekSong(event, index) {
 
 // ==================== CHAT BOT ====================
 const chatContext = {
-    userName: 'Yvonne',
+    userName: 'Amina',
     favorites: {
         food: 'sushi',
         activities: ['traveling', 'horror movies'],
@@ -552,7 +552,7 @@ const chatContext = {
 const aiResponses = {
     greeting: [
         "Hey there! 💕 How can I help you celebrate your amazing relationship today?",
-        "Hi! 💖 Ready to plan something special for Yvonne?",
+        "Hi! 💖 Ready to plan something special for Amina?",
         "Hello! 🌹 What would you like to chat about?"
     ],
     dateIdeas: [
@@ -564,7 +564,7 @@ const aiResponses = {
         "Plan a picnic at sunset with her favorite foods and a playlist of your songs! 🌅"
     ],
     travel: [
-        "Tokyo would be perfect for Yvonne! Amazing sushi AND unique experiences! 🗼🍣",
+        "Tokyo would be perfect for Amina! Amazing sushi AND unique experiences! 🗼🍣",
         "Paris is always romantic - imagine strolling the streets hand in hand! 🗼💕",
         "Bali offers both adventure and relaxation - perfect for you two! 🏝️",
         "Santorini's sunsets would be breathtaking to share together! 🌅"
@@ -657,11 +657,11 @@ function generateAIResponse(message) {
 
     // Default responses
     const defaultResponses = [
-        "That's wonderful! Yvonne is lucky to have someone who cares so much! 💕",
+        "That's wonderful! Amina is lucky to have someone who cares so much! 💕",
         "Tell me more! I'm here to help make your relationship even more special! 💖",
         "I love that! What else would you like to know? 🌹",
-        "Great question! Based on what I know about Yvonne, she'd probably love something involving travel or good food! ✈️🍣",
-        "Remember, the best gifts come from the heart. What makes Yvonne smile? 😊"
+        "Great question! Based on what I know about Amina, she'd probably love something involving travel or good food! ✈️🍣",
+        "Remember, the best gifts come from the heart. What makes Amina smile? 😊"
     ];
     
     return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
@@ -669,14 +669,14 @@ function generateAIResponse(message) {
 
 // ==================== DAILY INSPIRATION ====================
 const loveQuotes = [
-    "Yvonne, you make every adventure more beautiful just by being there. Every sunrise is brighter, every sushi roll tastes better, and every scary movie is more thrilling when I'm with you.",
+    "Amina, you make every adventure more beautiful just by being there. Every sunrise is brighter, every sushi roll tastes better, and every scary movie is more thrilling when I'm with you.",
     "Your smile is my favorite view, better than any travel destination. When you laugh, the whole world lights up, and I fall in love all over again.",
     "Every sushi date with you is a journey to happiness. It's not just about the food - it's about the conversations, the laughter, and the way we can make ordinary moments extraordinary together.",
     "I love how you're brave enough to watch horror movies but sweet enough to hold my hand. Your strength and tenderness inspire me every day.",
     "Traveling the world means nothing without you by my side. Every destination is just a place until we create memories there together.",
     "You're not just my Valentine - you're my forever adventure. Every day with you is a new chapter in the greatest story ever told.",
     "Every day with you is a new page in our love story, and I can't wait to see what adventures tomorrow brings.",
-    "Yvonne, you are my favorite hello and my hardest goodbye. Distance means nothing when someone means everything.",
+    "Amina, you are my favorite hello and my hardest goodbye. Distance means nothing when someone means everything.",
     "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.",
     "You are my today and all of my tomorrows. Every moment spent with you is a moment I treasure.",
     "I choose you. And I'll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you.",
@@ -753,7 +753,7 @@ function checkDailyNotification() {
             const quote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
             
             if (Notification.permission === 'granted') {
-                new Notification('💕 Daily Love Message for Yvonne', {
+                new Notification('💕 Daily Love Message for Amina', {
                     body: quote.substring(0, 100) + '...',
                     icon: '❤️'
                 });
@@ -769,7 +769,7 @@ setInterval(checkDailyNotification, 60000);
 
 // ==================== SOCIAL SHARING ====================
 function shareToSocial(platform, customText = '') {
-    const text = customText || `❤️ Check out this amazing Valentine's message! 💕 #ValentinesDay #Love #Yvonne`;
+    const text = customText || `❤️ Check out this amazing Valentine's message! 💕 #ValentinesDay #Love #Amina`;
     const url = window.location.href;
 
     const shareLinks = {

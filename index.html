@@ -2,715 +2,1375 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Valentine  Yvonne 💕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#ff6b9d">
+    <meta name="description" content="Amina Paradise App - Your personal companion with love, faith, and daily support">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Amina Paradise">
+    <title>Amina Paradise 💕</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
 </head>
 <body>
+    <!-- PWA Install Prompt -->
+    <div id="pwaInstallPrompt" class="pwa-prompt" style="display: none;">
+        <div class="pwa-prompt-content">
+            <span class="pwa-icon">📱</span>
+            <p>Install Amina Paradise App for the best experience!</p>
+            <div class="pwa-buttons">
+                <button class="btn btn-small" onclick="installPWA()">Install</button>
+                <button class="btn btn-small btn-outline" onclick="dismissPWA()">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Hearts -->
     <div class="hearts-container" id="heartsContainer"></div>
 
     <!-- Sparkles -->
     <div class="sparkles" id="sparkles"></div>
 
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-content">
-            <div class="nav-brand">💕 For Yvonne</div>
-            <div class="nav-menu">
-                <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
-                <button class="nav-btn" onclick="showPage('favorites')">⭐ Favorites</button>
-                <button class="nav-btn" onclick="showPage('stories')">📖 Stories</button>
-                <button class="nav-btn" onclick="showPage('books')">📚 Books</button>
-                <button class="nav-btn" onclick="showPage('memories')">📸 Memories</button>
-                <button class="nav-btn" onclick="showPage('playlist')">🎵 Music</button>
-                <button class="nav-btn" onclick="showPage('wishes')">⭐ Wishes</button>
-                <button class="nav-btn" onclick="showPage('chat')">💬 Chat</button>
-                <button class="nav-btn" onclick="showPage('inspiration')">🌹 Daily</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <div class="page-content home-content">
-            <h1 class="main-title">Will You Be My Valentine?</h1>
-            <div class="name">YVONNE</div>
-            <p style="font-size: 1.8rem; color: #ffd1dc; font-style: italic; margin: 20px 0;">
-                My Adventure Partner, My Love ✈️❤️
-            </p>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-logo">💕</div>
+            <h1>Welcome to Amina Paradise</h1>
+            <p>Your personal love companion</p>
             
-            <div class="big-heart">❤️</div>
-
-            <div class="bible-verse">
-                <p>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud."</p>
-                <div class="bible-reference">- 1 Corinthians 13:4</div>
+            <div id="pinForm" class="pin-form">
+                <p>Enter your PIN</p>
+                <div class="pin-inputs">
+                    <input type="password" maxlength="1" class="pin-digit" id="pin1">
+                    <input type="password" maxlength="1" class="pin-digit" id="pin2">
+                    <input type="password" maxlength="1" class="pin-digit" id="pin3">
+                    <input type="password" maxlength="1" class="pin-digit" id="pin4">
+                </div>
+                <button class="btn" onclick="verifyPIN()">Enter 💕</button>
+                <p class="login-hint">Default PIN: 1234</p>
             </div>
-
-            <div class="card">
-                <h2>Why You're Special To Me 🌹</h2>
-                <p>
-                    Yvonne, every moment with you is an adventure. Your love for exploring the world 
-                    mirrors how you've explored the depths of my heart. From our sushi dates to scary 
-                    movie nights, you've turned my life into the most beautiful journey I could ever imagine.
-                </p>
+            
+            <div id="biometricBtn" style="display: none;">
+                <button class="btn" onclick="biometricLogin()">🔐 Unlock with Face ID</button>
             </div>
-
-            <button class="btn" onclick="showPage('favorites')">Explore Our Love Story 💕</button>
-            <button class="btn" onclick="showPage('chat')">Talk to LoveBot 💬</button>
         </div>
     </div>
 
-    <!-- FAVORITES PAGE -->
-    <div id="favorites" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                The Things I Love About You 💫
-            </h1>
+    <!-- Main App -->
+    <div id="mainApp" style="display: none;">
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <div class="nav-content">
+                <div class="nav-brand">💕 Amina Paradise</div>
+                <div class="nav-menu" id="navMenu">
+                    <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
+                    <button class="nav-btn" onclick="showPage('morning')">🌅 Morning</button>
+                    <button class="nav-btn" onclick="showPage('chat')">💬 Jofrey</button>
+                    <button class="nav-btn" onclick="showPage('mood')">😊 Mood</button>
+                    <button class="nav-btn" onclick="showPage('memories')">📸 Memories</button>
+                    <button class="nav-btn" onclick="showPage('timeline')">⏳ Timeline</button>
+                    <button class="nav-btn" onclick="showPage('favorites')">🍽️ Favorites</button>
+                    <button class="nav-btn" onclick="showPage('bible')">✝️ Bible</button>
+                    <button class="nav-btn" onclick="showPage('prayer')">🙏 Prayer</button>
+                    <button class="nav-btn" onclick="showPage('wishes')">✨ Wishes</button>
+                    <button class="nav-btn" onclick="showPage('vault')">🔐 Vault</button>
+                    <button class="nav-btn" onclick="showPage('selfcare')">🪞 Self-Care</button>
+                    <button class="nav-btn" onclick="showPage('achievements')">🏆 Achievements</button>
+                    <button class="nav-btn" onclick="showPage('emergency')">🆘 Emergency</button>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </nav>
 
-            <div class="grid">
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="page-content home-content">
+                <h1 class="main-title">Good Morning Amina! 🌸</h1>
+                <div class="name">AMINA</div>
+                <div class="big-heart">❤️</div>
+                
                 <div class="card">
-                    <h2>🍣 Sushi Adventures</h2>
-                    <p style="margin: 15px 0;">
-                        Every sushi date with you is magical. The way your eyes light up when trying 
-                        a new roll, how we always fight over the last piece of salmon nigiri, and 
-                        those moments of pure joy when we discover a new favorite spot together.
-                    </p>
-                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
-                        <strong style="color: #ff6b9d;">Our Favorites:</strong>
-                        <p style="margin-top: 5px;">🍱 Dragon Roll, Spicy Tuna, Salmon Nigiri</p>
-                        <p style="margin-top: 5px;">🥢 Always sharing, always laughing</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>✈️ Travel Dreams</h2>
-                    <p style="margin: 15px 0;">
-                        Exploring the world with you is my greatest adventure. From planning our next 
-                        destination to getting lost in new cities together, every journey with you 
-                        creates memories I'll treasure forever.
-                    </p>
-                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
-                        <strong style="color: #ff6b9d;">Dream Destinations:</strong>
-                        <p style="margin-top: 5px;">🗼 Tokyo - For the ultimate sushi experience</p>
-                        <p style="margin-top: 5px;">🗽 Paris - Romance under the Eiffel Tower</p>
-                        <p style="margin-top: 5px;">🏝️ Santorini - Sunsets together</p>
-                        <p style="margin-top: 5px;">🌴 Bali - Adventure and relaxation</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🎬 Horror Movie Nights</h2>
-                    <p style="margin: 15px 0;">
-                        I love how fearless you are watching the scariest movies. Those cozy nights 
-                        on the couch, the way you grab my hand during jump scares, and how we stay 
-                        up discussing plot twists until midnight.
-                    </p>
-                    <div style="background: rgba(255,107,157,0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
-                        <strong style="color: #ff6b9d;">Our Watch List:</strong>
-                        <p style="margin-top: 5px;">👻 The Conjuring Series</p>
-                        <p style="margin-top: 5px;">😱 Hereditary</p>
-                        <p style="margin-top: 5px;">🤫 A Quiet Place</p>
-                        <p style="margin-top: 5px;">🏚️ The Haunting of Hill House</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bible-verse">
-                <p>"Two are better than one, because they have a good return for their labor."</p>
-                <div class="bible-reference">- Ecclesiastes 4:9</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- LOVE STORIES PAGE -->
-    <div id="stories" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Our Love Stories 📖
-            </h1>
-
-            <div class="card">
-                <h2>Add a New Story</h2>
-                <input type="text" placeholder="Story title..." id="storyTitle">
-                <textarea placeholder="Tell our story..." id="storyContent"></textarea>
-                <button class="btn btn-small" onclick="addStory()">Save Story 💕</button>
-                <button class="btn btn-small" onclick="generateStoryIdeas()">Get AI Writing Prompts ✨</button>
-            </div>
-
-            <div id="aiPrompts" style="display: none;" class="card">
-                <h2>AI Story Prompts 💭</h2>
-                <div id="promptsList"></div>
-            </div>
-
-            <div id="storiesList"></div>
-        </div>
-    </div>
-
-    <!-- BOOKS PAGE -->
-    <div id="books" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Books We Love 📚
-            </h1>
-
-            <div class="book-card">
-                <div class="book-icon">📖</div>
-                <div class="book-info">
-                    <h3>The 5 Love Languages - Gary Chapman</h3>
-                    <p>Understanding how we express and receive love. Your love language is Quality Time, 
-                    and I cherish every second we spend together - from sushi dates to movie marathons.</p>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-icon">✝️</div>
-                <div class="book-info">
-                    <h3>The Meaning of Marriage - Timothy Keller</h3>
-                    <p>A beautiful exploration of love, commitment, and partnership rooted in faith. 
-                    This book reminds us that our love is part of God's greater plan.</p>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-icon">💑</div>
-                <div class="book-info">
-                    <h3>Love Does - Bob Goff</h3>
-                    <p>Love is an action, not just a feeling. Every day with you, I choose to love you 
-                    through adventures, laughter, and all life's moments.</p>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-icon">🌍</div>
-                <div class="book-info">
-                    <h3>The Alchemist - Paulo Coelho</h3>
-                    <p>Following your dreams and finding treasure along the way. You are my greatest treasure, 
-                    discovered on this journey called life.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>Add a Book We Love</h2>
-                <input type="text" placeholder="Book title..." id="bookTitle">
-                <input type="text" placeholder="Author..." id="bookAuthor">
-                <textarea placeholder="Why we love it..." id="bookNotes"></textarea>
-                <button class="btn btn-small" onclick="addBook()">Add Book 📚</button>
-            </div>
-
-            <div id="customBooks"></div>
-        </div>
-    </div>
-
-    <!-- MEMORIES PAGE -->
-    <div id="memories" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Our Beautiful Memories 📸
-            </h1>
-
-            <div class="memory-grid" id="memoriesGrid"></div>
-
-            <div class="card">
-                <h2>Add a New Memory</h2>
-                <input type="text" placeholder="Memory title..." id="memoryTitle">
-                <input type="text" placeholder="Memory emoji (e.g., 💑, ✈️, 🎬)..." id="memoryEmoji">
-                <textarea placeholder="Describe this beautiful memory..." id="memoryDesc"></textarea>
-                <input type="date" id="memoryDate">
-                <button class="btn" onclick="addMemory()">Save Memory 💕</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PLAYLIST PAGE -->
-    <div id="playlist" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Our Love Playlist 🎵
-            </h1>
-
-            <div id="musicPlayerContainer"></div>
-
-            <div class="bible-verse">
-                <p>"Place me like a seal over your heart, like a seal on your arm; for love is as strong as death."</p>
-                <div class="bible-reference">- Song of Solomon 8:6</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WISHES PAGE -->
-    <div id="wishes" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Our Wishes & Dreams ⭐
-            </h1>
-
-            <div class="card">
-                <h2>Make a Wish Together</h2>
-                <p>Share your dreams, goals, and prayers for our future together.</p>
-                <input type="text" placeholder="Your wish or dream..." id="wishInput">
-                <select id="wishCategory">
-                    <option value="travel">✈️ Travel Dreams</option>
-                    <option value="goals">🎯 Life Goals</option>
-                    <option value="prayer">🙏 Prayers</option>
-                    <option value="adventure">🌟 Adventures</option>
-                </select>
-                <button class="btn" onclick="addWish()">Add Wish ⭐</button>
-            </div>
-
-            <div id="wishesList"></div>
-        </div>
-    </div>
-
-    <!-- CHAT PAGE -->
-    <div id="chat" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 30px;">
-                Chat with LoveBot 💬
-            </h1>
-
-            <div class="chat-container">
-                <div class="chat-header">
-                    <h2 style="color: #ff6b9d; margin: 0;">💕 LoveBot - Your AI Relationship Assistant</h2>
-                    <p style="margin: 5px 0 0 0; color: #ffd1dc; font-size: 0.9rem;">
-                        Powered by Claude AI - Ask for date ideas, relationship advice, or just chat!
-                    </p>
+                    <h2>You Are Deeply Loved 💖</h2>
+                    <p id="dailyMessage">"The Lord bless you and keep you" - Numbers 6:24</p>
                 </div>
                 
-                <div class="chat-messages" id="chatMessages">
-                    <div class="message bot">
-                        <p>Hi Yvonne! 💕 I'm LoveBot, powered by AI to help celebrate your amazing relationship! 
-                        I can suggest date ideas, help with gift planning, give relationship advice, or just chat about love. 
-                        What would you like to talk about?</p>
+                <div class="quick-actions">
+                    <button class="btn" onclick="showPage('morning')">🌅 Today's Message</button>
+                    <button class="btn" onclick="showPage('chat')">💬 Talk to Jofrey</button>
+                    <button class="btn" onclick="showPage('mood')">😊 How Are You?</button>
+                </div>
+                
+                <div class="card stats-card">
+                    <h2>Our Journey Together 💕</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="daysTogether">0</div>
+                            <div class="stat-label">Days Together</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="messagesExchanged">0</div>
+                            <div class="stat-label">Messages</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="memoriesCount">0</div>
+                            <div class="stat-label">Memories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="streakDays">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="typing-indicator" id="typingIndicator">
-                    <div class="typing-dots">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                </div>
-
-                <div class="chat-input-area">
-                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." 
-                           onkeypress="if(event.key==='Enter') sendMessage()">
-                    <button class="send-btn" onclick="sendMessage()">Send 💕</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- DAILY INSPIRATION PAGE -->
-    <div id="inspiration" class="page">
-        <div class="page-content">
-            <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 40px;">
-                Daily Love & Inspiration 🌹
-            </h1>
-
-            <div class="notification-prompt">
-                <h2 style="color: #ff6b9d; margin-bottom: 15px;">💌 Daily Love Messages</h2>
-                <p style="margin: 15px 0;">Get a beautiful love message, quote, or Bible verse every day at 9 AM!</p>
-                <button class="btn" onclick="enableNotifications()">Enable Daily Messages 🔔</button>
-                <p id="notificationStatus" style="margin-top: 15px; color: #ffd1dc;"></p>
-            </div>
-
-            <div class="card">
-                <h2>Today's Love Message 💕</h2>
-                <p id="dailyQuote" style="font-size: 1.3rem; font-style: italic; margin: 20px 0; line-height: 1.8;"></p>
-                <button class="btn btn-small" onclick="generateNewQuote()">Get New Message 💫</button>
-            </div>
-
-            <div class="bible-verse">
-                <p id="dailyVerse"></p>
-                <div class="bible-reference" id="verseRef"></div>
-            </div>
-
-            <div class="card">
-                <h2>Share Your Love 💝</h2>
-                <p>Spread the love on social media!</p>
-                <div class="share-buttons">
-                    <button class="share-btn" onclick="shareToSocial('instagram')">📷 Instagram</button>
-                    <button class="share-btn" onclick="shareToSocial('tiktok')">🎵 TikTok</button>
-                    <button class="share-btn" onclick="shareToSocial('facebook')">📘 Facebook</button>
-                    <button class="share-btn" onclick="shareToSocial('twitter')">🐦 Twitter</button>
-                    <button class="share-btn" onclick="shareToSocial('whatsapp')">💬 WhatsApp</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>Love Statistics 📊</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
-                        <div style="font-size: 3rem; color: #ff6b9d;" id="daysCounter">0</div>
-                        <p>Days Together</p>
-                    </div>
-                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
-                        <div style="font-size: 3rem; color: #ff6b9d;" id="memoriesCounter">0</div>
-                        <p>Memories Created</p>
-                    </div>
-                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
-                        <div style="font-size: 3rem; color: #ff6b9d;" id="wishesCounter">0</div>
-                        <p>Dreams Together</p>
-                    </div>
-                    <div style="text-align: center; padding: 20px; background: rgba(255,107,157,0.1); border-radius: 15px;">
-                        <div style="font-size: 3rem; color: #ff6b9d;">∞</div>
-                        <p>Love Forever</p>
-                    </div>
+                
+                <div class="bible-verse">
+                    <p>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud."</p>
+                    <div class="bible-reference">- 1 Corinthians 13:4</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Memory Modal -->
-    <div id="memoryModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeMemoryModal()">×</span>
-            <div id="memoryModalContent"></div>
+        <!-- MORNING/NIGHT MESSAGE PAGE -->
+        <div id="morning" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🌅 Daily Messages</h1>
+                
+                <div class="time-selector">
+                    <button class="time-btn active" onclick="showTimePeriod('morning')">🌅 Morning</button>
+                    <button class="time-btn" onclick="showTimePeriod('night')">🌙 Night</button>
+                </div>
+                
+                <div id="morningContent" class="time-content active">
+                    <div class="card message-card">
+                        <div class="message-emoji">🌸</div>
+                        <h2>Good Morning Amina!</h2>
+                        <p id="morningMessage">You are deeply loved today. Every sunrise brings new opportunities to experience joy and blessings.</p>
+                        <div class="bible-verse">
+                            <p id="morningVerse">"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you."</p>
+                            <div class="bible-reference">- Numbers 6:24-25</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card lifestyle-card">
+                        <h3>🌱 Daily Reminders</h3>
+                        <div class="lifestyle-items">
+                            <div class="lifestyle-item" onclick="toggleLifestyle('water')">
+                                <span class="lifestyle-icon">💧</span>
+                                <span>Drink Water</span>
+                                <span class="lifestyle-check" id="waterCheck">○</span>
+                            </div>
+                            <div class="lifestyle-item" onclick="toggleLifestyle('food')">
+                                <span class="lifestyle-icon">🍽️</span>
+                                <span>Eat Well</span>
+                                <span class="lifestyle-check" id="foodCheck">○</span>
+                            </div>
+                            <div class="lifestyle-item" onclick="toggleLifestyle('rest')">
+                                <span class="lifestyle-icon">😴</span>
+                                <span>Rest</span>
+                                <span class="lifestyle-check" id="restCheck">○</span>
+                            </div>
+                            <div class="lifestyle-item" onclick="toggleLifestyle('faith')">
+                                <span class="lifestyle-icon">🙏</span>
+                                <span>Prayer Time</span>
+                                <span class="lifestyle-check" id="faithCheck">○</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="nightContent" class="time-content" style="display: none;">
+                    <div class="card message-card night-theme">
+                        <div class="message-emoji">🌙</div>
+                        <h2>Good Night Amina 🌹</h2>
+                        <p id="nightMessage">May your dreams be filled with peace and love. You are amazing and deserving of all good things.</p>
+                        <div class="bible-verse">
+                            <p id="nightVerse">"When you lie down, you will not be afraid; when you lie down, your sleep will be sweet."</p>
+                            <div class="bible-reference">- Proverbs 3:24</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🌸 Gratitude</h3>
+                        <textarea id="gratitudeInput" placeholder="What are you grateful for today?"></textarea>
+                        <button class="btn btn-small" onclick="saveGratitude()">Save 💕</button>
+                    </div>
+                </div>
+                
+                <div class="card surprise-card">
+                    <h3>🎁 Surprise Love Drop!</h3>
+                    <div id="surpriseContent">
+                        <p>Check back later for a surprise! 💌</p>
+                    </div>
+                    <button class="btn btn-small" onclick="triggerSurprise()">Get Surprise Now! 🎁</button>
+                </div>
+            </div>
         </div>
+
+        <!-- JOFFREY CHAT PAGE -->
+        <div id="chat" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 10px;">💬 Chat with Jofrey</h1>
+                <p style="text-align: center; color: #ffd1dc; margin-bottom: 20px;">Your loving AI companion 💞</p>
+                
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-avatar">🤖</div>
+                        <div class="chat-info">
+                            <h2 style="color: #ff6b9d; margin: 0;">Jofrey 💕</h2>
+                            <p style="margin: 0; color: #81c784; font-size: 0.8rem;">● Online</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">
+                            <p>Hi Amina! 💕 I'm Jofrey, your loving AI companion! 
+                            I'm here to chat, support you, and share love every day.
+                            How are you feeling today? 😊</p>
+                        </div>
+                    </div>
+                    
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" class="chat-input" id="chatInput" 
+                               placeholder="Type your message..." 
+                               onkeypress="if(event.key==='Enter') sendMessage()">
+                        <button class="send-btn" onclick="sendMessage()">Send 💕</button>
+                    </div>
+                    
+                    <div class="quick-replies">
+                        <button class="quick-reply" onclick="quickReply('I love you')">❤️ I love you</button>
+                        <button class="quick-reply" onclick="quickReply('Tell me something sweet')">🍯 Sweet</button>
+                        <button class="quick-reply" onclick="quickReply('Give me encouragement')">✨ Encouragement</button>
+                        <button class="quick-reply" onclick="quickReply('I need comfort')">🤗 Comfort</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOOD CHECK-IN PAGE -->
+        <div id="mood" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">😊 How Are You Feeling?</h1>
+                
+                <div class="mood-selector">
+                    <button class="mood-btn" onclick="selectMood('happy')">
+                        <span class="mood-emoji">😊</span>
+                        <span>Happy</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood('sad')">
+                        <span class="mood-emoji">😔</span>
+                        <span>Sad</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood('tired')">
+                        <span class="mood-emoji">😴</span>
+                        <span>Tired</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood('stressed')">
+                        <span class="mood-emoji">😰</span>
+                        <span>Stressed</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood('loved')">
+                        <span class="mood-emoji">❤️</span>
+                        <span>Loved</span>
+                    </button>
+                    <button class="mood-btn" onclick="selectMood('grateful')">
+                        <span class="mood-emoji">🙏</span>
+                        <span>Grateful</span>
+                    </button>
+                </div>
+                
+                <div id="moodResponse" class="card" style="display: none;">
+                    <div class="mood-response">
+                        <div id="moodEmoji" class="mood-response-emoji"></div>
+                        <h2 id="moodTitle"></h2>
+                        <p id="moodMessage"></p>
+                        
+                        <div id="moodSuggestions">
+                            <h3>💡 Suggestions:</h3>
+                            <div id="suggestionList"></div>
+                        </div>
+                        
+                        <div id="musicSuggestion" style="display: none;">
+                            <h3>🎵 Recommended Music:</h3>
+                            <button class="btn btn-small" onclick="playMoodMusic()">Play 🎶</button>
+                        </div>
+                        
+                        <div id="verseSuggestion" style="display: none;">
+                            <div class="bible-verse">
+                                <p id="verseText"></p>
+                                <div class="bible-reference" id="verseRef"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEMORIES PAGE -->
+        <div id="memories" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">📸 Our Beautiful Memories</h1>
+                
+                <div class="memory-controls">
+                    <button class="btn btn-small" onclick="showAddMemoryForm()">➕ Add Memory</button>
+                    <button class="btn btn-small" onclick="viewMemoryTimeline()">📅 Timeline View</button>
+                </div>
+                
+                <div id="addMemoryForm" class="card" style="display: none;">
+                    <h2>Add New Memory</h2>
+                    <input type="text" placeholder="Memory title..." id="memoryTitle">
+                    <input type="text" placeholder="Emoji (e.g., 💑, ✈️, 🎬)..." id="memoryEmoji">
+                    <textarea placeholder="Describe this beautiful memory..." id="memoryDesc"></textarea>
+                    <input type="date" id="memoryDate">
+                    <input type="file" id="memoryPhoto" accept="image/*">
+                    <button class="btn" onclick="saveMemory()">Save Memory 💕</button>
+                    <button class="btn btn-outline" onclick="cancelAddMemory()">Cancel</button>
+                </div>
+                
+                <div class="memory-grid" id="memoriesGrid">
+                    <!-- Memories will be loaded here -->
+                </div>
+                
+                <div class="card" id="noMemories" style="text-align: center;">
+                    <p style="color: #ffd1dc;">No memories yet! Start creating beautiful moments together 💕</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMELINE PAGE -->
+        <div id="timeline" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">⏳ Our Journey Together</h1>
+                
+                <div class="timeline-container" id="timelineContainer">
+                    <!-- Timeline will be rendered here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- FAVORITES PAGE -->
+        <div id="favorites" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🍽️ Amina's Favorites</h1>
+                
+                <div class="favorites-grid">
+                    <div class="card favorite-card">
+                        <h3>🐟 Favorite Food</h3>
+                        <div class="favorite-item">
+                            <span class="favorite-icon">🐟</span>
+                            <span id="favoriteFood">Ugali with Fish</span>
+                        </div>
+                        <button class="btn btn-small" onclick="editFavorite('food')">Edit</button>
+                    </div>
+                    
+                    <div class="card favorite-card">
+                        <h3>🍔 Other Favorite</h3>
+                        <div class="favorite-item">
+                            <span class="favorite-icon">🍔</span>
+                            <span id="favoriteBurger">Burger</span>
+                        </div>
+                        <button class="btn btn-small" onclick="editFavorite('burger')">Edit</button>
+                    </div>
+                    
+                    <div class="card favorite-card">
+                        <h3>🥤 Favorite Drink</h3>
+                        <div class="favorite-item">
+                            <span class="favorite-icon">🥤</span>
+                            <span id="favoriteDrink">K-Vant</span>
+                        </div>
+                        <button class="btn btn-small" onclick="editFavorite('drink')">Edit</button>
+                    </div>
+                    
+                    <div class="card favorite-card">
+                        <h3>🎵 Favorite Song</h3>
+                        <div class="favorite-item">
+                            <span class="favorite-icon">🎵</span>
+                            <span id="favoriteSong">To be added...</span>
+                        </div>
+                        <button class="btn btn-small" onclick="editFavorite('song')">Edit</button>
+                    </div>
+                    
+                    <div class="card favorite-card">
+                        <h3>✝️ Favorite Verse</h3>
+                        <div class="favorite-item">
+                            <span class="favorite-icon">✝️</span>
+                            <span id="favoriteVerse">"Love is patient, love is kind..."</span>
+                        </div>
+                        <button class="btn btn-small" onclick="editFavorite('verse')">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIBLE PAGE -->
+        <div id="bible" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">✝️ Bible & Faith Corner</h1>
+                
+                <div class="card">
+                    <h2>📖 Daily Verse</h2>
+                    <p id="dailyBibleVerse" style="font-size: 1.3rem; font-style: italic;">"For God so loved the world that he gave his one and only Son..."</p>
+                    <div class="bible-reference" id="dailyBibleRef">- John 3:16</div>
+                    <button class="btn btn-small" onclick="newDailyVerse()">New Verse ✨</button>
+                </div>
+                
+                <div class="card">
+                    <h2>💕 Love Verses</h2>
+                    <div class="verses-list" id="loveVerses">
+                        <div class="verse-item" onclick="showVerse('1 Corinthians 13:4-7')">
+                            <p>"Love is patient, love is kind..."</p>
+                        </div>
+                        <div class="verse-item" onclick="showVerse('Song of Solomon 8:6')">
+                            <p>"Place me like a seal over your heart..."</p>
+                        </div>
+                        <div class="verse-item" onclick="showVerse('Romans 8:38-39')">
+                            <p>"Nothing can separate us from God's love..."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>🙏 Faith Encouragement</h2>
+                    <p id="faithEncouragement">"Trust in the Lord with all your heart..."</p>
+                    <button class="btn btn-small" onclick="newFaithEncouragement()">More 💫</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRAYER PAGE -->
+        <div id="prayer" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🙏 Prayer & Gratitude Journal</h1>
+                
+                <div class="prayer-tabs">
+                    <button class="tab-btn active" onclick="showPrayerTab('prayers')">Prayers</button>
+                    <button class="tab-btn" onclick="showPrayerTab('gratitude')">Gratitude</button>
+                    <button class="tab-btn" onclick="showPrayerTab('reflections')">Reflections</button>
+                </div>
+                
+                <div id="prayersTab" class="prayer-tab-content active">
+                    <div class="card">
+                        <h3>Write a Prayer</h3>
+                        <textarea id="prayerInput" placeholder="Dear Lord, thank you for..."></textarea>
+                        <button class="btn" onclick="savePrayer()">Send Prayer 🙏</button>
+                    </div>
+                    
+                    <div id="prayersList" class="prayers-list">
+                        <!-- Prayers will be listed here -->
+                    </div>
+                </div>
+                
+                <div id="gratitudeTab" class="prayer-tab-content" style="display: none;">
+                    <div class="card">
+                        <h3>What Are You Grateful For?</h3>
+                        <textarea id="gratitudeEntry" placeholder="Today I am grateful for..."></textarea>
+                        <button class="btn" onclick="saveGratitudeEntry()">Save Gratitude 💕</button>
+                    </div>
+                    
+                    <div id="gratitudeList" class="gratitude-list">
+                        <!-- Gratitude entries will be listed here -->
+                    </div>
+                </div>
+                
+                <div id="reflectionsTab" class="prayer-tab-content" style="display: none;">
+                    <div class="card">
+                        <h3>Daily Reflection</h3>
+                        <textarea id="reflectionInput" placeholder="Reflect on your day..."></textarea>
+                        <button class="btn" onclick="saveReflection()">Save Reflection 🌟</button>
+                    </div>
+                    
+                    <div id="reflectionsList" class="reflections-list">
+                        <!-- Reflections will be listed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WISHES PAGE -->
+        <div id="wishes" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">✨ Wishes & Dreams</h1>
+                
+                <div class="card">
+                    <h3>Make a Wish</h3>
+                    <input type="text" id="wishInput" placeholder="I wish for...">
+                    <select id="wishCategory">
+                        <option value="travel">✈️ Travel Dream</option>
+                        <option value="goals">🎯 Life Goal</option>
+                        <option value="relationship">💑 Relationship</option>
+                        <option value="faith">🙏 Faith</option>
+                        <option value="health">🏃‍♀️ Health</option>
+                        <option value="career">💼 Career</option>
+                        <option value="other">⭐ Other</option>
+                    </select>
+                    <button class="btn" onclick="addWish()">Add Wish ✨</button>
+                </div>
+                
+                <div class="wishes-categories">
+                    <button class="category-btn active" onclick="filterWishes('all')">All</button>
+                    <button class="category-btn" onclick="filterWishes('pending')">Pending</button>
+                    <button class="category-btn" onclick="filterWishes('completed')">Completed</button>
+                </div>
+                
+                <div id="wishesList" class="wishes-list">
+                    <!-- Wishes will be listed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- VAULT PAGE -->
+        <div id="vault" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🔐 Secret Love Vault</h1>
+                
+                <div class="card vault-intro">
+                    <p>🔒 Your private space for storing precious memories, notes, and confessions.</p>
+                    <p style="color: #81c784;">Protected with Face ID / PIN</p>
+                </div>
+                
+                <div id="vaultLocked" class="vault-locked">
+                    <div class="vault-icon">🔐</div>
+                    <button class="btn" onclick="unlockVault()">🔓 Unlock Vault</button>
+                </div>
+                
+                <div id="vaultUnlocked" class="vault-unlocked" style="display: none;">
+                    <div class="vault-tabs">
+                        <button class="vault-tab active" onclick="showVaultTab('notes')">📝 Notes</button>
+                        <button class="vault-tab" onclick="showVaultTab('voice')">🎤 Voice</button>
+                        <button class="vault-tab" onclick="showVaultTab('photos')">📸 Photos</button>
+                        <button class="vault-tab" onclick="showVaultTab('confessions')">💕 Confessions</button>
+                    </div>
+                    
+                    <div id="vaultNotesTab" class="vault-tab-content active">
+                        <div class="card">
+                            <textarea id="vaultNote" placeholder="Write a private note..."></textarea>
+                            <button class="btn btn-small" onclick="saveVaultNote()">Save Note 🔒</button>
+                        </div>
+                        <div id="vaultNotesList"></div>
+                    </div>
+                    
+                    <div id="vaultVoiceTab" class="vault-tab-content" style="display: none;">
+                        <button class="btn" onclick="startVoiceRecording()">🎤 Record Voice Message</button>
+                        <div id="voiceRecordingsList"></div>
+                    </div>
+                    
+                    <div id="vaultPhotosTab" class="vault-tab-content" style="display: none;">
+                        <input type="file" accept="image/*" id="vaultPhoto">
+                        <button class="btn btn-small" onclick="saveVaultPhoto()">Save Photo 🔒</button>
+                        <div id="vaultPhotosGrid"></div>
+                    </div>
+                    
+                    <div id="vaultConfessionsTab" class="vault-tab-content" style="display: none;">
+                        <div class="card">
+                            <textarea id="confessionInput" placeholder="Write your confession..."></textarea>
+                            <button class="btn btn-small" onclick="saveConfession()">Save Confession 💕</button>
+                        </div>
+                        <div id="confessionsList"></div>
+                    </div>
+                    
+                    <button class="btn btn-outline" onclick="lockVault()">🔒 Lock Vault</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SELF-CARE PAGE -->
+        <div id="selfcare" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🪞 Self-Care & Beauty</h1>
+                
+                <div class="selfcare-reminders">
+                    <div class="card reminder-card">
+                        <div class="reminder-icon">💧</div>
+                        <div class="reminder-info">
+                            <h3>Drink Water</h3>
+                            <p>Stay hydrated throughout the day</p>
+                        </div>
+                        <div class="reminder-status" id="waterReminderStatus">Not tracked</div>
+                        <button class="btn btn-small" onclick="toggleWaterReminder()">Track 💧</button>
+                    </div>
+                    
+                    <div class="card reminder-card">
+                        <div class="reminder-icon">🍽️</div>
+                        <div class="reminder-info">
+                            <h3>Eat Well</h3>
+                            <p>Nourish your body with good food</p>
+                        </div>
+                        <div class="reminder-status" id="foodReminderStatus">Not tracked</div>
+                        <button class="btn btn-small" onclick="toggleFoodReminder()">Track 🍽️</button>
+                    </div>
+                    
+                    <div class="card reminder-card">
+                        <div class="reminder-icon">😴</div>
+                        <div class="reminder-info">
+                            <h3>Rest</h3>
+                            <p>Get enough sleep tonight</p>
+                        </div>
+                        <div class="reminder-status" id="restReminderStatus">Not tracked</div>
+                        <button class="btn btn-small" onclick="toggleRestReminder()">Track 😴</button>
+                    </div>
+                </div>
+                
+                <div class="card affirmations-card">
+                    <h2>💖 Daily Affirmations</h2>
+                    <div id="affirmationDisplay" class="affirmation-display">
+                        <p>"You are beautiful"</p>
+                    </div>
+                    <button class="btn btn-small" onclick="newAffirmation()">New Affirmation ✨</button>
+                    
+                    <div class="affirmations-list">
+                        <p onclick="showAffirmation('You are beautiful')">"You are beautiful"</p>
+                        <p onclick="showAffirmation('You matter')">"You matter"</p>
+                        <p onclick="showAffirmation('You are enough')">"You are enough"</p>
+                        <p onclick="showAffirmation('You are loved')">"You are loved"</p>
+                        <p onclick="showAffirmation('You are strong')">"You are strong"</p>
+                        <p onclick="showAffirmation('You are capable')">"You are capable"</p>
+                    </div>
+                </div>
+                
+                <div class="card beauty-tips-card">
+                    <h2>💅 Beauty Tips</h2>
+                    <div id="beautyTip" class="beauty-tip">
+                        <p>Stay hydrated for glowing skin! 💧</p>
+                    </div>
+                    <button class="btn btn-small" onclick="newBeautyTip()">New Tip 💫</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACHIEVEMENTS PAGE -->
+        <div id="achievements" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🏆 Love Achievements</h1>
+                
+                <div class="achievements-summary">
+                    <div class="card">
+                        <h3>Your Progress</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-fill" id="achievementProgress" style="width: 0%"></div>
+                        </div>
+                        <p id="achievementCount">0 / 20 Achievements Unlocked</p>
+                    </div>
+                </div>
+                
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be rendered here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- EMERGENCY PAGE -->
+        <div id="emergency" class="page">
+            <div class="page-content">
+                <h1 style="text-align: center; color: #ff6b9d; margin-bottom: 20px;">🆘 Emergency Comfort</h1>
+                
+                <div class="card emergency-intro">
+                    <p>Sometimes life feels heavy. It's okay. You're not alone. 💙</p>
+                    <p>Tap below for immediate comfort and support.</p>
+                </div>
+                
+                <div class="emergency-actions">
+                    <button class="btn emergency-btn" onclick="emergencyComfort()">
+                        <span class="emergency-icon">💙</span>
+                        <span>Send Comfort</span>
+                    </button>
+                    
+                    <button class="btn emergency-btn" onclick="emergencyMusic()">
+                        <span class="emergency-icon">🎵</span>
+                        <span>Calm Music</span>
+                    </button>
+                    
+                    <button class="btn emergency-btn" onclick="emergencyPrayer()">
+                        <span class="emergency-icon">🙏</span>
+                        <span>Quick Prayer</span>
+                    </button>
+                    
+                    <button class="btn emergency-btn" onclick="openEmergencyChat()">
+                        <span class="emergency-icon">💬</span>
+                        <span>Talk to Jofrey</span>
+                    </button>
+                </div>
+                
+                <div id="emergencyResponse" class="card" style="display: none;">
+                    <div class="emergency-response">
+                        <p id="emergencyMessage"></p>
+                        <div id="emergencyVerse" class="bible-verse" style="display: none;"></div>
+                    </div>
+                </div>
+                
+                <div class="card emergency-quotes">
+                    <h3>💙 Remember</h3>
+                    <p id="emergencyQuote">"This too shall pass. You are stronger than you know."</p>
+                    <button class="btn btn-small" onclick="newEmergencyQuote()">New Quote 🌟</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MUSIC PLAYER (Shared across pages) -->
+        <div id="musicPlayer" class="music-player-bar" style="display: none;">
+            <div class="music-info">
+                <span id="currentSongTitle">No song playing</span>
+            </div>
+            <div class="music-controls">
+                <button class="music-btn" onclick="toggleMusic()">⏯️</button>
+                <button class="music-btn" onclick="closeMusic()">✖️</button>
+            </div>
+        </div>
+        
+        <!-- Toast Notifications -->
+        <div id="toastContainer" class="toast-container"></div>
     </div>
 
     <script>
-        // ==================== DATA STORAGE ====================
-        const STORAGE_KEYS = {
-            memories: 'yvonne_memories',
-            wishes: 'yvonne_wishes',
-            stories: 'yvonne_stories',
-            books: 'yvonne_books',
-            startDate: 'yvonne_start_date',
-            songs: 'yvonne_songs'
+        // ==================== APP STATE ====================
+        const APP_STATE = {
+            user: 'Amina',
+            phone: '0753198752',
+            pin: '1234',
+            isLoggedIn: false,
+            vaultUnlocked: false,
+            currentPage: 'home',
+            currentMood: null,
+            currentTimePeriod: 'morning',
+            musicPlaying: false,
+            currentSong: null
         };
 
-        // Initialize data
+        // ==================== STORAGE KEYS ====================
+        const STORAGE_KEYS = {
+            memories: 'amina_memories',
+            wishes: 'amina_wishes',
+            stories: 'amina_stories',
+            books: 'amina_books',
+            prayers: 'amina_prayers',
+            gratitude: 'amina_gratitude',
+            reflections: 'amina_reflections',
+            vaultNotes: 'amina_vault_notes',
+            vaultConfessions: 'amina_vault_confessions',
+            moodHistory: 'amina_mood_history',
+            achievements: 'amina_achievements',
+            lifestyle: 'amina_lifestyle',
+            startDate: 'amina_start_date',
+            songs: 'amina_songs',
+            conversations: 'amina_conversations'
+        };
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+            createHearts();
+            createSparkles();
+        });
+
+        async function initializeApp() {
+            // Check if PWA is already installed
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('App is running as PWA');
+            }
+            
+            // Check for saved login state
+            const savedLogin = localStorage.getItem('amina_logged_in');
+            if (savedLogin === 'true') {
+                APP_STATE.isLoggedIn = true;
+                showMainApp();
+            }
+            
+            // Register service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered:', reg.scope))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            }
+            
+            // Request notification permission
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+            
+            // Check for biometric support
+            if ('FaceID' in window || (window.PublicKeyCredential && window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable)) {
+                document.getElementById('biometricBtn').style.display = 'block';
+            }
+            
+            // Initialize data
+            initializeData();
+            loadAchievements();
+            updateStats();
+        }
+
         function initializeData() {
+            // Set start date if not set
             if (!localStorage.getItem(STORAGE_KEYS.startDate)) {
-                localStorage.setItem(STORAGE_KEYS.startDate, '2024-01-14'); // Example start date
+                localStorage.setItem(STORAGE_KEYS.startDate, '2024-01-14');
             }
-
+            
+            // Initialize sample memories
             if (!localStorage.getItem(STORAGE_KEYS.memories)) {
-                const defaultMemories = [
-                    {
-                        id: Date.now(),
-                        title: 'First Date',
-                        emoji: '💑',
-                        description: 'The night everything changed. Sushi & endless conversation.',
-                        date: '2024-01-14'
-                    },
-                    {
-                        id: Date.now() + 1,
-                        title: 'First Trip Together',
-                        emoji: '✈️',
-                        description: 'Our adventure began. New places, new memories.',
-                        date: '2024-03-20'
-                    },
-                    {
-                        id: Date.now() + 2,
-                        title: 'Movie Marathon',
-                        emoji: '🎬',
-                        description: 'Scary movies and sweet moments all night long.',
-                        date: '2024-05-10'
-                    }
+                const sampleMemories = [
+                    { id: 1, title: 'First Message', emoji: '💌', desc: 'The beginning of something beautiful', date: '2024-01-14' },
+                    { id: 2, title: 'First Call', emoji: '📞', desc: 'Hearing your voice for the first time', date: '2024-01-20' },
+                    { id: 3, title: 'First Meet', emoji: '💑', desc: 'Finally meeting in person', date: '2024-02-14' }
                 ];
-                localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(defaultMemories));
+                localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(sampleMemories));
             }
-
+            
+            // Initialize sample wishes
             if (!localStorage.getItem(STORAGE_KEYS.wishes)) {
-                const defaultWishes = [
-                    {
-                        id: Date.now(),
-                        wish: 'Visit Tokyo Together',
-                        category: 'travel',
-                        status: 'pending',
-                        date: new Date().toISOString()
-                    },
-                    {
-                        id: Date.now() + 1,
-                        wish: 'Build Our Dream Home',
-                        category: 'goals',
-                        status: 'pending',
-                        date: new Date().toISOString()
-                    },
-                    {
-                        id: Date.now() + 2,
-                        wish: 'Grow Together in Faith',
-                        category: 'prayer',
-                        status: 'pending',
-                        date: new Date().toISOString()
-                    }
+                const sampleWishes = [
+                    { id: 1, text: 'Visit Tokyo Together', category: 'travel', status: 'pending' },
+                    { id: 2, text: 'Grow Together in Faith', category: 'faith', status: 'pending' },
+                    { id: 3, text: 'Build Our Dream Home', category: 'goals', status: 'pending' }
                 ];
-                localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(defaultWishes));
+                localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(sampleWishes));
             }
-
-            if (!localStorage.getItem(STORAGE_KEYS.stories)) {
-                const defaultStories = [
-                    {
-                        id: Date.now(),
-                        title: 'Our First Sushi Date',
-                        content: 'It was a rainy evening when we decided to try that new sushi place. Little did we know it would become "our place." We laughed, we shared, and I knew then that you were special.',
-                        date: new Date('2024-01-14').toISOString()
-                    },
-                    {
-                        id: Date.now() + 1,
-                        title: 'The Horror Movie That Brought Us Closer',
-                        content: 'You said you loved scary movies, so I picked the scariest one I could find. When you grabbed my hand during that jump scare, my heart skipped - and it wasn\'t from the movie.',
-                        date: new Date('2024-02-10').toISOString()
-                    }
-                ];
-                localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(defaultStories));
-            }
-
+            
+            // Initialize songs
             if (!localStorage.getItem(STORAGE_KEYS.songs)) {
-                const defaultSongs = [
-                    {
-                        id: 1,
-                        title: 'Perfect',
-                        artist: 'Ed Sheeran',
-                        note: 'Our song - the one that reminds me of you',
-                        lyrics: 'I found a love, for me...'
-                    },
-                    {
-                        id: 2,
-                        title: 'All of Me',
-                        artist: 'John Legend',
-                        note: 'Because you have all of me',
-                        lyrics: 'Cause all of me loves all of you...'
-                    },
-                    {
-                        id: 3,
-                        title: 'Thinking Out Loud',
-                        artist: 'Ed Sheeran',
-                        note: "I'll love you till we're 70",
-                        lyrics: 'When your legs don\'t work like they used to before...'
-                    },
-                    {
-                        id: 4,
-                        title: 'A Thousand Years',
-                        artist: 'Christina Perri',
-                        note: 'I have loved you for a thousand years',
-                        lyrics: 'I have died every day waiting for you...'
-                    }
+                const sampleSongs = [
+                    { id: 1, title: 'Perfect', artist: 'Ed Sheeran', category: 'romantic' },
+                    { id: 2, title: 'All of Me', artist: 'John Legend', category: 'romantic' },
+                    { id: 3, title: 'What a Beautiful Name', artist: 'Hillsong', category: 'worship' }
                 ];
-                localStorage.setItem(STORAGE_KEYS.songs, JSON.stringify(defaultSongs));
+                localStorage.setItem(STORAGE_KEYS.songs, JSON.stringify(sampleSongs));
             }
         }
 
-        // ==================== ANIMATIONS ====================
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            document.getElementById('heartsContainer').appendChild(heart);
-            setTimeout(() => heart.remove(), 8000);
-        }
-
-        function createSparkle() {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            sparkle.style.width = (Math.random() * 3 + 1) + 'px';
-            sparkle.style.height = sparkle.style.width;
-            sparkle.style.animationDelay = Math.random() * 3 + 's';
-            document.getElementById('sparkles').appendChild(sparkle);
-        }
-
-        function celebrate() {
-            for (let i = 0; i < 30; i++) {
-                setTimeout(createHeart, i * 50);
+        // ==================== LOGIN FUNCTIONS ====================
+        function verifyPIN() {
+            const pin = document.getElementById('pin1').value +
+                       document.getElementById('pin2').value +
+                       document.getElementById('pin3').value +
+                       document.getElementById('pin4').value;
+            
+            if (pin === APP_STATE.pin) {
+                APP_STATE.isLoggedIn = true;
+                localStorage.setItem('amina_logged_in', 'true');
+                showMainApp();
+                showToast('Welcome to Amina Paradise! 💕');
+            } else {
+                showToast('Incorrect PIN. Try again.');
+                document.querySelectorAll('.pin-digit').forEach(input => input.value = '');
+                document.getElementById('pin1').focus();
             }
         }
 
-        // Initialize animations
-        setInterval(createHeart, 300);
-        for (let i = 0; i < 50; i++) {
-            createSparkle();
+        async function biometricLogin() {
+            if (window.PublicKeyCredential) {
+                try {
+                    const credential = await navigator.credentials.create({
+                        publicKey: {
+                            challenge: new Uint8Array(32),
+                            rp: { name: 'Amina Paradise' },
+                            user: {
+                                id: new Uint8Array([1]),
+                                name: 'Amina',
+                                displayName: 'Amina'
+                            },
+                            pubKeyCredParams: [{ type: 'public-key', alg: -7 }]
+                        }
+                    });
+                    APP_STATE.isLoggedIn = true;
+                    localStorage.setItem('amina_logged_in', 'true');
+                    showMainApp();
+                } catch (error) {
+                    console.log('Biometric login not available:', error);
+                    showToast('Biometric login not available. Use PIN.');
+                }
+            }
+        }
+
+        // PIN input handling
+        document.querySelectorAll('.pin-digit').forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < 3) {
+                    document.querySelectorAll('.pin-digit')[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    document.querySelectorAll('.pin-digit')[index - 1].focus();
+                }
+            });
+        });
+
+        function showMainApp() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
+            loadAllData();
         }
 
         // ==================== NAVIGATION ====================
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
             document.getElementById(pageId).classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
             event.target.classList.add('active');
+            
+            APP_STATE.currentPage = pageId;
+            
+            // Load page-specific data
+            loadPageData(pageId);
+            
+            // Close mobile menu
+            document.querySelector('.nav-menu').classList.remove('active');
+        }
 
-            // Load page-specific content
-            if (pageId === 'memories') loadMemories();
-            if (pageId === 'wishes') loadWishes();
-            if (pageId === 'stories') loadStories();
-            if (pageId === 'playlist') loadMusicPlayer();
-            if (pageId === 'inspiration') {
-                generateNewQuote();
-                updateStats();
+        function loadPageData(pageId) {
+            switch(pageId) {
+                case 'memories':
+                    loadMemories();
+                    break;
+                case 'wishes':
+                    loadWishes();
+                    break;
+                case 'prayer':
+                    loadPrayers();
+                    break;
+                case 'timeline':
+                    loadTimeline();
+                    break;
+                case 'achievements':
+                    loadAchievements();
+                    break;
             }
         }
 
-        // ==================== MEMORIES ====================
-        function loadMemories() {
-            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
-            const grid = document.getElementById('memoriesGrid');
-            grid.innerHTML = '';
-
-            memories.forEach(memory => {
-                const card = document.createElement('div');
-                card.className = 'memory-card';
-                card.innerHTML = `
-                    <div class="memory-image">${memory.emoji || '❤️'}</div>
-                    <div class="memory-content">
-                        <h3 style="color: #ff6b9d;">${memory.title}</h3>
-                        <p>${memory.description}</p>
-                        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">${new Date(memory.date).toLocaleDateString()}</p>
-                        <button class="delete-btn" onclick="deleteMemory(${memory.id})">Delete</button>
-                    </div>
-                `;
-                card.onclick = (e) => {
-                    if (!e.target.classList.contains('delete-btn')) {
-                        viewMemory(memory);
-                    }
-                };
-                grid.appendChild(card);
-            });
+        function toggleMobileMenu() {
+            document.querySelector('.nav-menu').classList.toggle('active');
         }
 
-        function addMemory() {
+        // ==================== ANIMATIONS ====================
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const hearts = ['❤️', '💕', '💗', '💖', '💓', '💘', '💝'];
+            
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 8 + 's';
+                    heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                    heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+                    container.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => heart.remove(), 12000);
+                }, i * 300);
+            }
+            
+            // Keep creating hearts
+            setInterval(() => {
+                if (document.visibilityState === 'visible') {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = '0s';
+                    heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                    heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+                    container.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 12000);
+                }
+            }, 1500);
+        }
+
+        function createSparkles() {
+            const container = document.getElementById('sparkles');
+            
+            for (let i = 0; i < 40; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.width = (2 + Math.random() * 4) + 'px';
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // ==================== LOAD ALL DATA ====================
+        function loadAllData() {
+            loadMemories();
+            loadWishes();
+            loadPrayers();
+            loadGratitude();
+            loadAchievements();
+            updateStats();
+        }
+
+        // ==================== TOAST NOTIFICATIONS ====================
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // ==================== PWA INSTALL ====================
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('pwaInstallPrompt').style.display = 'block';
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(result => {
+                    if (result.outcome === 'accepted') {
+                        showToast('App installed successfully! 💕');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+            dismissPWA();
+        }
+
+        function dismissPWA() {
+            document.getElementById('pwaInstallPrompt').style.display = 'none';
+        }
+
+        // ==================== CHAT FUNCTIONS ====================
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage('user', message);
+            input.value = '';
+            
+            // Show typing indicator
+            showTyping();
+            
+            // Simulate Jofrey response
+            setTimeout(() => {
+                hideTyping();
+                const response = generateJofreyResponse(message);
+                addMessage('bot', response);
+                saveConversation(message, response);
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function quickReply(message) {
+            document.getElementById('chatInput').value = message;
+            sendMessage();
+        }
+
+        function addMessage(type, text) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerHTML = `<p>${text}</p>`;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            document.getElementById('typingIndicator').classList.add('show');
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        }
+
+        function hideTyping() {
+            document.getElementById('typingIndicator').classList.remove('show');
+        }
+
+        function generateJofreyResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Love responses
+            if (lowerMessage.includes('love') || lowerMessage.includes('❤️')) {
+                return `I love you too, Amina! 💕 You mean everything to me. Every moment with you is a blessing. You are my sunshine, my inspiration, and my greatest joy. 🌸`;
+            }
+            
+            // Sad/down responses
+            if (lowerMessage.includes('sad') || lowerMessage.includes('cry') || lowerMessage.includes('miss')) {
+                return `I understand, my love. 💙 It's okay to feel down sometimes. Remember that you're not alone. I'm always here for you. Let me share some comfort: "${getRandomEncouragement()}"`;
+            }
+            
+            // Encouragement
+            if (lowerMessage.includes('encouragement') || lowerMessage.includes('support') || lowerMessage.includes('help')) {
+                return `You are strong, capable, and amazing! ✨ Remember: "The Lord is my strength and my shield; I trust him with all my heart." (Proverbs 3:5) You've got this!`;
+            }
+            
+            // Morning/greeting
+            if (lowerMessage.includes('morning') || lowerMessage.includes('hi') || lowerMessage.includes('hello')) {
+                return `Good morning, beautiful Amina! 🌸 How is your day going? I'm here to make it brighter!`;
+            }
+            
+            // Default response
+            return `I'm always here for you, Amina! 💕 Tell me more about what's on your mind. I'm listening with all my heart.`;
+        }
+
+        function getRandomEncouragement() {
+            const encouragements = [
+                "This too shall pass. You are stronger than you know.",
+                "Every storm runs out of rain. brighter days are coming.",
+                "You are loved beyond measure.",
+                "Your feelings are valid. Take all the time you need.",
+                "I believe in you, always."
+            ];
+            return encouragements[Math.floor(Math.random() * encouragements.length)];
+        }
+
+        function saveConversation(userMsg, botResponse) {
+            const conversations = JSON.parse(localStorage.getItem(STORAGE_KEYS.conversations) || '[]');
+            conversations.push({
+                user: userMsg,
+                bot: botResponse,
+                timestamp: new Date().toISOString()
+            });
+            // Keep only last 100 conversations
+            if (conversations.length > 100) {
+                conversations.shift();
+            }
+            localStorage.setItem(STORAGE_KEYS.conversations, JSON.stringify(conversations));
+        }
+
+        // ==================== MOOD FUNCTIONS ====================
+        function selectMood(mood) {
+            APP_STATE.currentMood = mood;
+            
+            const moodData = {
+                happy: { emoji: '😊', title: 'Happy!', message: 'Your joy lights up the world! Keep smiling! 🌟' },
+                sad: { emoji: '😔', title: 'Feeling Down', message: 'It\'s okay to feel sad sometimes. I\'m here for you. 💙' },
+                tired: { emoji: '😴', title: 'Tired', message: 'Rest is important. Take care of yourself, my love. 🌸' },
+                stressed: { emoji: '😰', title: 'Stressed', message: 'Breathe deeply. You\'ve got this! 🙏' },
+                loved: { emoji: '❤️', title:Feeling Loved', message: 'You ARE loved! So deeply and completely! 💕' },
+                grateful: { emoji: '🙏', title: 'Grateful', message: 'Gratitude brings more joy! You\'re amazing! ✨' }
+            };
+            
+            const data = moodData[mood];
+            
+            document.getElementById('moodEmoji').textContent = data.emoji;
+            document.getElementById('moodTitle').textContent = data.title;
+            document.getElementById('moodMessage').textContent = data.message;
+            
+            // Show suggestions
+            showMoodSuggestions(mood);
+            
+            document.getElementById('moodResponse').style.display = 'block';
+            
+            // Save mood
+            saveMood(mood);
+        }
+
+        function showMoodSuggestions(mood) {
+            const suggestions = {
+                happy: ['Dance to your favorite song! 💃', 'Share your joy with someone! 😊', 'Take a moment to appreciate this feeling! 🌸'],
+                sad: ['Listen to calming music 🎵', 'Write about your feelings 📝', 'Get a hug from someone you love 🤗'],
+                tired: ['Take a short nap 😴', 'Drink some water 💧', 'Do some gentle stretching 🧘'],
+                stressed: ['Practice deep breathing 🧘', 'Take a walk outside 🌳', 'Listen to relaxing music 🎶'],
+                loved: ['Send love to someone else 💕', 'Share your gratitude 🙏', 'Spread the love! 🌟'],
+                grateful: ['Write a gratitude list 📝', 'Share your gratitude with others 💬', 'Celebrate this feeling! 🎉']
+            };
+            
+            const list = document.getElementById('suggestionList');
+            list.innerHTML = suggestions[mood].map(s => `<p>• ${s}</p>`).join('');
+            
+            // Show music suggestion
+            document.getElementById('musicSuggestion').style.display = 'block';
+            document.getElementById('verseSuggestion').style.display = 'block';
+            
+            const verses = {
+                happy: { text: '"Rejoice in the Lord always. I will say it again: Rejoice!"', ref: '- Philippians 4:4' },
+                sad: { text: '"The Lord is near to the brokenhearted and saves the crushed in spirit."', ref: '- Psalm 34:18' },
+                tired: { text: '"Come to me, all who labor and are heavy laden, and I will give you rest."', ref: '- Matthew 11:28' },
+                stressed: { text: '"Cast all your anxiety on him because he cares for you."', ref: '- 1 Peter 5:7' },
+                loved: { text: '"We love because he first loved us."', ref: '- 1 John 4:19' },
+                grateful: { text: '"Give thanks in all circumstances; for this is the will of God."', ref: '- 1 Thessalonians 5:18' }
+            };
+            
+            const verse = verses[mood];
+            document.getElementById('verseText').textContent = verse.text;
+            document.getElementById('verseRef').textContent = verse.ref;
+        }
+
+        function saveMood(mood) {
+            const moodHistory = JSON.parse(localStorage.getItem(STORAGE_KEYS.moodHistory) || '[]');
+            moodHistory.push({
+                mood,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem(STORAGE_KEYS.moodHistory, JSON.stringify(moodHistory));
+            checkMoodAchievements();
+        }
+
+        function playMoodMusic() {
+            showToast('Playing calming music... 🎵');
+            // Implement music player
+        }
+
+        // ==================== MEMORY FUNCTIONS ====================
+        function showAddMemoryForm() {
+            document.getElementById('addMemoryForm').style.display = 'block';
+        }
+
+        function cancelAddMemory() {
+            document.getElementById('addMemoryForm').style.display = 'none';
+        }
+
+        function saveMemory() {
             const title = document.getElementById('memoryTitle').value;
             const emoji = document.getElementById('memoryEmoji').value;
-            const description = document.getElementById('memoryDesc').value;
+            const desc = document.getElementById('memoryDesc').value;
             const date = document.getElementById('memoryDate').value;
-
-            if (!title || !description) {
-                alert('Please fill in title and description!');
+            
+            if (!title || !emoji) {
+                showToast('Please fill in title and emoji!');
                 return;
             }
-
+            
             const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
             memories.unshift({
                 id: Date.now(),
                 title,
-                emoji: emoji || '❤️',
-                description,
-                date: date || new Date().toISOString()
+                emoji,
+                desc,
+                date: date || new Date().toISOString().split('T')[0]
             });
-
+            
             localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(memories));
             
-            document.getElementById('memoryTitle').value = '';
-            document.getElementById('memoryEmoji').value = '';
-            document.getElementById('memoryDesc').value = '';
-            document.getElementById('memoryDate').value = '';
-
+            showToast('Memory saved! 💕');
+            cancelAddMemory();
             loadMemories();
-            celebrate();
+            unlockAchievement('first_memory');
         }
 
-        function deleteMemory(id) {
-            if (confirm('Are you sure you want to delete this memory?')) {
-                let memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
-                memories = memories.filter(m => m.id !== id);
-                localStorage.setItem(STORAGE_KEYS.memories, JSON.stringify(memories));
-                loadMemories();
-            }
-        }
-
-        function viewMemory(memory) {
-            const modal = document.getElementById('memoryModal');
-            const content = document.getElementById('memoryModalContent');
-            content.innerHTML = `
-                <h1 style="color: #ff6b9d; margin: 20px 0;">${memory.emoji} ${memory.title}</h1>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: #ffd1dc; margin: 20px 0;">${memory.description}</p>
-                <p style="color: #ff6b9d; margin-top: 20px;">📅 ${new Date(memory.date).toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                })}</p>
-            `;
-            modal.classList.add('show');
-        }
-
-        function closeMemoryModal() {
-            document.getElementById('memoryModal').classList.remove('show');
-        }
-
-        // ==================== WISHES ====================
-        function loadWishes() {
-            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
-            const list = document.getElementById('wishesList');
-            list.innerHTML = '';
-
-            const categoryIcons = {
-                'travel': '✈️',
-                'goals': '🎯',
-                'prayer': '🙏',
-                'adventure': '🌟'
-            };
-
-            const categoryNames = {
-                'travel': 'Travel Dreams',
-                'goals': 'Life Goals',
-                'prayer': 'Prayers',
-                'adventure': 'Adventures'
-            };
-
-            wishes.forEach(wish => {
-                const item = document.createElement('div');
-                item.className = 'wish-item';
-                item.innerHTML = `
-                    <h3>${categoryIcons[wish.category]} ${wish.wish}</h3>
-                    <p>Added on ${new Date(wish.date).toLocaleDateString()}</p>
-                    <small style="color: #ff6b9d;">${categoryNames[wish.category]}</small>
-                    <div style="margin-top: 10px;">
-                        <span class="wish-status ${wish.status}">${wish.status === 'completed' ? '✅ Completed' : '⏳ Pending'}</span>
-                        ${wish.status === 'pending' ? 
-                            `<button class="btn btn-small" style="margin-left: 10px;" onclick="completeWish(${wish.id})">Mark Complete ✓</button>` : 
-                            ''}
-                        <button class="delete-btn" style="margin-left: 10px;" onclick="deleteWish(${wish.id})">Delete</button>
-                    </div>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        function addWish() {
-            const wishInput = document.getElementById('wishInput').value;
-            const category = document.getElementById('wishCategory').value;
-
-            if (!wishInput) {
-                alert('Please enter a wish!');
+        function loadMemories() {
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            const grid = document.getElementById('memoriesGrid');
+            
+            if (memories.length === 0) {
+                grid.innerHTML = '';
+                document.getElementById('noMemories').style.display = 'block';
                 return;
             }
+            
+            document.getElementById('noMemories').style.display = 'none';
+            grid.innerHTML = memories.map(memory => `
+                <div class="memory-card" onclick="viewMemory(${memory.id})">
+                    <div class="memory-image">${memory.emoji}</div>
+                    <div class="memory-content">
+                        <h3>${memory.title}</h3>
+                        <p>${memory.desc || ''}</p>
+                        <p class="memory-date">📅 ${memory.date}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
 
+        function viewMemory(id) {
+            showToast('Opening memory... 📸');
+        }
+
+        function viewMemoryTimeline() {
+            showPage('timeline');
+        }
+
+        // ==================== WISHES FUNCTIONS ====================
+        function addWish() {
+            const text = document.getElementById('wishInput').value;
+            const category = document.getElementById('wishCategory').value;
+            
+            if (!text) {
+                showToast('Please write your wish!');
+                return;
+            }
+            
             const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
             wishes.unshift({
                 id: Date.now(),
-                wish: wishInput,
+                text,
                 category,
                 status: 'pending',
-                date: new Date().toISOString()
+                createdAt: new Date().toISOString()
             });
-
+            
             localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
+            
+            showToast('Wish added! ✨');
             document.getElementById('wishInput').value = '';
             loadWishes();
-            celebrate();
         }
 
-        function completeWish(id) {
+        function loadWishes(filter = 'all') {
             let wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
-            wishes = wishes.map(w => {
-                if (w.id === id) w.status = 'completed';
-                return w;
-            });
-            localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
-            loadWishes();
-            celebrate();
+            
+            if (filter === 'pending') {
+                wishes = wishes.filter(w => w.status === 'pending');
+            } else if (filter === 'completed') {
+                wishes = wishes.filter(w => w.status === 'completed');
+            }
+            
+            const container = document.getElementById('wishesList');
+            container.innerHTML = wishes.map(wish => `
+                <div class="wish-item ${wish.status}">
+                    <div>
+                        <h3>${getCategoryIcon(wish.category)} ${wish.text}</h3>
+                        <span class="wish-status ${wish.status}" onclick="toggleWishStatus(${wish.id})">
+                            ${wish.status === 'pending' ? '○ Pending' : '✓ Completed'}
+                        </span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteWish(${wish.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function filterWishes(filter) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            loadWishes(filter);
+        }
+
+        function toggleWishStatus(id) {
+            let wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
+            const wish = wishes.find(w => w.id === id);
+            if (wish) {
+                wish.status = wish.status === 'pending' ? 'completed' : 'pending';
+                localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
+                loadWishes();
+                if (wish.status === 'completed') {
+                    unlockAchievement('first_wish');
+                }
+            }
         }
 
         function deleteWish(id) {
-            if (confirm('Are you sure you want to delete this wish?')) {
+            if (confirm('Delete this wish?')) {
                 let wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
                 wishes = wishes.filter(w => w.id !== id);
                 localStorage.setItem(STORAGE_KEYS.wishes, JSON.stringify(wishes));
@@ -718,567 +1378,490 @@
             }
         }
 
-        // ==================== STORIES ====================
-        function loadStories() {
-            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
-            const list = document.getElementById('storiesList');
-            list.innerHTML = '';
+        function getCategoryIcon(category) {
+            const icons = {
+                travel: '✈️',
+                goals: '🎯',
+                relationship: '💑',
+                faith: '🙏',
+                health: '🏃‍♀️',
+                career: '💼',
+                other: '⭐'
+            };
+            return icons[category] || '⭐';
+        }
 
-            stories.forEach(story => {
-                const card = document.createElement('div');
-                card.className = 'story-card';
-                card.innerHTML = `
-                    <h3>${story.title}</h3>
-                    <div class="story-meta">
-                        📅 ${new Date(story.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        // ==================== PRAYER FUNCTIONS ====================
+        function showPrayerTab(tab) {
+            document.querySelectorAll('.prayer-tab-content').forEach(t => t.style.display = 'none');
+            document.querySelectorAll('.prayer-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tab + 'Tab').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function savePrayer() {
+            const prayer = document.getElementById('prayerInput').value;
+            if (!prayer) return;
+            
+            const prayers = JSON.parse(localStorage.getItem(STORAGE_KEYS.prayers) || '[]');
+            prayers.unshift({
+                text: prayer,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(STORAGE_KEYS.prayers, JSON.stringify(prayers));
+            showToast('Prayer sent! 🙏');
+            document.getElementById('prayerInput').value = '';
+            loadPrayers();
+        }
+
+        function loadPrayers() {
+            const prayers = JSON.parse(localStorage.getItem(STORAGE_KEYS.prayers) || '[]');
+            const container = document.getElementById('prayersList');
+            container.innerHTML = prayers.map((p, i) => `
+                <div class="prayer-item">
+                    <p>${p.text}</p>
+                    <small>${formatDate(p.timestamp)}</small>
+                </div>
+            `).join('') || '<p style="color: #ffd1dc;">No prayers yet. Write your first prayer! 🙏</p>';
+        }
+
+        function saveGratitudeEntry() {
+            const entry = document.getElementById('gratitudeEntry').value;
+            if (!entry) return;
+            
+            const gratitude = JSON.parse(localStorage.getItem(STORAGE_KEYS.gratitude) || '[]');
+            gratitude.unshift({
+                text: entry,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(STORAGE_KEYS.gratitude, JSON.stringify(gratitude));
+            showToast('Gratitude saved! 💕');
+            document.getElementById('gratitudeEntry').value = '';
+            loadGratitude();
+        }
+
+        function loadGratitude() {
+            const gratitude = JSON.parse(localStorage.getItem(STORAGE_KEYS.gratitude) || '[]');
+            const container = document.getElementById('gratitudeList');
+            container.innerHTML = gratitude.map((g, i) => `
+                <div class="gratitude-item">
+                    <p>${g.text}</p>
+                    <small>${formatDate(g.timestamp)}</small>
+                </div>
+            `).join('') || '<p style="color: #ffd1dc;">No gratitude entries yet!</p>';
+        }
+
+        function saveReflection() {
+            const reflection = document.getElementById('reflectionInput').value;
+            if (!reflection) return;
+            
+            const reflections = JSON.parse(localStorage.getItem(STORAGE_KEYS.reflections) || '[]');
+            reflections.unshift({
+                text: reflection,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(STORAGE_KEYS.reflections, JSON.stringify(reflections));
+            showToast('Reflection saved! 🌟');
+            document.getElementById('reflectionInput').value = '';
+            loadReflections();
+        }
+
+        function loadReflections() {
+            const reflections = JSON.parse(localStorage.getItem(STORAGE_KEYS.reflections) || '[]');
+            const container = document.getElementById('reflectionsList');
+            container.innerHTML = reflections.map((r, i) => `
+                <div class="reflection-item">
+                    <p>${r.text}</p>
+                    <small>${formatDate(r.timestamp)}</small>
+                </div>
+            `).join('') || '<p style="color: #ffd1dc;">No reflections yet!</p>';
+        }
+
+        // ==================== TIMELINE FUNCTIONS ====================
+        function loadTimeline() {
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            const startDate = localStorage.getItem(STORAGE_KEYS.startDate);
+            
+            // Sort memories by date
+            memories.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            const container = document.getElementById('timelineContainer');
+            container.innerHTML = memories.map((m, index) => `
+                <div class="timeline-item ${index % 2 === 0 ? 'left' : 'right'}">
+                    <div class="timeline-content">
+                        <div class="timeline-emoji">${m.emoji}</div>
+                        <h3>${m.title}</h3>
+                        <p>${m.desc}</p>
+                        <small>${m.date}</small>
                     </div>
-                    <p style="color: #ffd1dc; line-height: 1.8;">${story.content}</p>
-                    <div class="share-buttons" style="margin-top: 20px;">
-                        <button class="share-btn" onclick="shareStory(${story.id}, 'instagram')">📷 Share</button>
-                        <button class="delete-btn" onclick="deleteStory(${story.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        // ==================== ACHIEVEMENTS FUNCTIONS ====================
+        const achievementsList = [
+            { id: 'first_memory', name: '📸 First Memory', description: 'Save your first memory' },
+            { id: 'first_wish', name: '✨ First Wish', description: 'Add your first wish' },
+            { id: 'week_streak', name: '🔥 7 Day Streak', description: 'Use the app for 7 days in a row' },
+            { id: 'mood_tracker', name: '😊 Mood Tracker', description: 'Log your mood 10 times' },
+            { id: 'prayer_warrior', name: '🙏 Prayer Warrior', description: 'Write 5 prayers' },
+            { id: 'grateful_heart', name: '💖 Grateful Heart', description: 'Write 5 gratitude entries' },
+            { id: 'love_story', name: '📖 Love Story', description: 'Write your first love story' },
+            { id: 'timeline_maker', name: '⏳ Timeline Creator', description: 'Add 5 memories' },
+            { id: 'faith_strong', name: '✝️ Strong Faith', description: 'Read 10 Bible verses' },
+            { id: 'dream_chaser', name: '🎯 Dream Chaser', description: 'Complete 3 wishes' }
+        ];
+
+        function loadAchievements() {
+            const unlocked = JSON.parse(localStorage.getItem(STORAGE_KEYS.achievements) || '[]');
+            const container = document.getElementById('achievementsGrid');
+            
+            container.innerHTML = achievementsList.map(ach => {
+                const isUnlocked = unlocked.includes(ach.id);
+                return `
+                    <div class="achievement-card ${isUnlocked ? 'unlocked' : 'locked'}">
+                        <div class="achievement-icon">${isUnlocked ? ach.name.split(' ')[0] : '🔒'}</div>
+                        <h3>${isUnlocked ? ach.name : 'Locked'}</h3>
+                        <p>${ach.description}</p>
+                        ${isUnlocked ? '<span class="unlocked-badge">✓ Unlocked</span>' : ''}
                     </div>
                 `;
-                list.appendChild(card);
-            });
-        }
-
-        function addStory() {
-            const title = document.getElementById('storyTitle').value;
-            const content = document.getElementById('storyContent').value;
-
-            if (!title || !content) {
-                alert('Please fill in both title and content!');
-                return;
-            }
-
-            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
-            stories.unshift({
-                id: Date.now(),
-                title,
-                content,
-                date: new Date().toISOString()
-            });
-
-            localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(stories));
+            }).join('');
             
-            document.getElementById('storyTitle').value = '';
-            document.getElementById('storyContent').value = '';
+            document.getElementById('achievementCount').textContent = `${unlocked.length} / ${achievementsList.length} Achievements Unlocked`;
+            document.getElementById('achievementProgress').style.width = `${(unlocked.length / achievementsList.length) * 100}%`;
+        }
+
+        function unlockAchievement(id) {
+            const unlocked = JSON.parse(localStorage.getItem(STORAGE_KEYS.achievements) || '[]');
+            if (!unlocked.includes(id)) {
+                unlocked.push(id);
+                localStorage.setItem(STORAGE_KEYS.achievements, JSON.stringify(unlocked));
+                showToast(`Achievement Unlocked! 🏆 ${achievementsList.find(a => a.id === id)?.name}`);
+                loadAchievements();
+            }
+        }
+
+        function checkMoodAchievements() {
+            const moodHistory = JSON.parse(localStorage.getItem(STORAGE_KEYS.moodHistory) || '[]');
+            if (moodHistory.length >= 10) {
+                unlockAchievement('mood_tracker');
+            }
+        }
+
+        // ==================== VAULT FUNCTIONS ====================
+        function unlockVault() {
+            const pin = prompt('Enter vault PIN:');
+            if (pin === APP_STATE.pin) {
+                APP_STATE.vaultUnlocked = true;
+                document.getElementById('vaultLocked').style.display = 'none';
+                document.getElementById('vaultUnlocked').style.display = 'block';
+                showToast('Vault unlocked! 🔓');
+            } else {
+                showToast('Incorrect PIN');
+            }
+        }
+
+        function lockVault() {
+            APP_STATE.vaultUnlocked = false;
+            document.getElementById('vaultLocked').style.display = 'block';
+            document.getElementById('vaultUnlocked').style.display = 'none';
+            showToast('Vault locked! 🔒');
+        }
+
+        function showVaultTab(tab) {
+            document.querySelectorAll('.vault-tab-content').forEach(t => t.style.display = 'none');
+            document.querySelectorAll('.vault-tab').forEach(b => b.classList.remove('active'));
             
-            loadStories();
-            celebrate();
+            document.getElementById('vault' + tab.charAt(0).toUpperCase() + tab.slice(1) + 'Tab').style.display = 'block';
+            event.target.classList.add('active');
         }
 
-        function deleteStory(id) {
-            if (confirm('Are you sure you want to delete this story?')) {
-                let stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
-                stories = stories.filter(s => s.id !== id);
-                localStorage.setItem(STORAGE_KEYS.stories, JSON.stringify(stories));
-                loadStories();
-            }
+        function saveVaultNote() {
+            const note = document.getElementById('vaultNote').value;
+            if (!note) return;
+            
+            const notes = JSON.parse(localStorage.getItem(STORAGE_KEYS.vaultNotes) || '[]');
+            notes.unshift({
+                text: note,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(STORAGE_KEYS.vaultNotes, JSON.stringify(notes));
+            showToast('Note saved! 🔒');
+            document.getElementById('vaultNote').value = '';
         }
 
-        function shareStory(id, platform) {
-            const stories = JSON.parse(localStorage.getItem(STORAGE_KEYS.stories) || '[]');
-            const story = stories.find(s => s.id === id);
-            if (story) {
-                const text = `${story.title}\n\n${story.content}\n\n#LoveStory #ValentinesDay`;
-                shareToSocial(platform, text);
-            }
+        function saveConfession() {
+            const confession = document.getElementById('confessionInput').value;
+            if (!confession) return;
+            
+            const confessions = JSON.parse(localStorage.getItem(STORAGE_KEYS.vaultConfessions) || '[]');
+            confessions.unshift({
+                text: confession,
+                timestamp: new Date().toISOString()
+            });
+            
+            localStorage.setItem(STORAGE_KEYS.vaultConfessions, JSON.stringify(confessions));
+            showToast('Confession saved! 💕');
+            document.getElementById('confessionInput').value = '';
         }
 
-        function generateStoryIdeas() {
-            const prompts = [
-                "💡 Write about the moment you knew Yvonne was special",
-                "💡 Describe your favorite adventure together",
-                "💡 Tell the story of a perfect day you spent together",
-                "💡 Write about a challenge you overcame as a couple",
-                "💡 Describe what you love most about Yvonne's personality",
-                "💡 Share a funny or embarrassing moment from your relationship",
-                "💡 Write about your dreams for the future together",
-                "💡 Describe a tradition you've created together"
+        // ==================== SELF-CARE FUNCTIONS ====================
+        const affirmations = [
+            "You are beautiful",
+            "You matter",
+            "You are enough",
+            "You are loved",
+            "You are strong",
+            "You are capable",
+            "You are smart",
+            "You are kind",
+            "You are unique",
+            "You are amazing"
+        ];
+
+        function newAffirmation() {
+            const affirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
+            document.querySelector('.affirmation-display p').textContent = `"${affirmation}"`;
+        }
+
+        function showAffirmation(text) {
+            document.querySelector('.affirmation-display p').textContent = `"${text}"`;
+        }
+
+        function newBeautyTip() {
+            const tips = [
+                "Stay hydrated for glowing skin! 💧",
+                "Get 7-9 hours of sleep for radiant skin 😴",
+                "Eat fruits and vegetables for natural glow 🍎",
+                "Use sunscreen daily to protect your skin ☀️",
+                "Take breaks from screens to rest your eyes 👀"
             ];
+            const tip = tips[Math.floor(Math.random() * tips.length)];
+            document.querySelector('.beauty-tip p').textContent = tip;
+        }
 
-            const promptsList = document.getElementById('promptsList');
-            promptsList.innerHTML = prompts.map(p => 
-                `<p style="padding: 15px; background: rgba(255,107,157,0.1); border-radius: 10px; margin: 10px 0; cursor: pointer;" 
-                    onclick="usePrompt('${p.replace('💡 ', '')}')">${p}</p>`
-            ).join('');
+        const lifestyleChecks = { water: false, food: false, rest: false, faith: false };
+
+        function toggleLifestyle(item) {
+            lifestyleChecks[item] = !lifestyleChecks[item];
+            document.getElementById(item + 'Check').textContent = lifestyleChecks[item] ? '✓' : '○';
             
-            document.getElementById('aiPrompts').style.display = 'block';
+            // Save to localStorage
+            localStorage.setItem(STORAGE_KEYS.lifestyle, JSON.stringify(lifestyleChecks));
         }
 
-        function usePrompt(prompt) {
-            document.getElementById('storyTitle').value = prompt;
-            document.getElementById('storyContent').focus();
-            window.scrollTo(0, 0);
-        }
-
-        // ==================== BOOKS ====================
-        function addBook() {
-            const title = document.getElementById('bookTitle').value;
-            const author = document.getElementById('bookAuthor').value;
-            const notes = document.getElementById('bookNotes').value;
-
-            if (!title || !author) {
-                alert('Please fill in title and author!');
-                return;
-            }
-
-            const books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
-            books.unshift({
-                id: Date.now(),
-                title,
-                author,
-                notes
-            });
-
-            localStorage.setItem(STORAGE_KEYS.books, JSON.stringify(books));
+        // ==================== EMERGENCY FUNCTIONS ====================
+        function emergencyComfort() {
+            const messages = [
+                "You are not alone. I'm here for you. 💙",
+                "This feeling will pass. You are stronger than you know. ✨",
+                "Take a deep breath. You've got this. 🌸",
+                "You are loved beyond measure. 💕",
+                "It's okay to not be okay. I'm here. 🤗"
+            ];
             
-            document.getElementById('bookTitle').value = '';
-            document.getElementById('bookAuthor').value = '';
-            document.getElementById('bookNotes').value = '';
-
-            loadCustomBooks();
-            celebrate();
+            document.getElementById('emergencyMessage').textContent = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('emergencyResponse').style.display = 'block';
         }
 
-        function loadCustomBooks() {
-            const books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
-            const container = document.getElementById('customBooks');
-            container.innerHTML = '';
-
-            books.forEach(book => {
-                const card = document.createElement('div');
-                card.className = 'book-card';
-                card.innerHTML = `
-                    <div class="book-icon">📘</div>
-                    <div class="book-info">
-                        <h3>${book.title} - ${book.author}</h3>
-                        <p>${book.notes}</p>
-                        <button class="delete-btn" onclick="deleteBook(${book.id})">Delete</button>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+        function emergencyMusic() {
+            showToast('Playing calming music... 🎵');
+            showPage('music');
         }
 
-        function deleteBook(id) {
-            if (confirm('Are you sure you want to delete this book?')) {
-                let books = JSON.parse(localStorage.getItem(STORAGE_KEYS.books) || '[]');
-                books = books.filter(b => b.id !== id);
-                localStorage.setItem(STORAGE_KEYS.books, JSON.stringify(books));
-                loadCustomBooks();
+        function emergencyPrayer() {
+            document.getElementById('emergencyMessage').textContent = '"The Lord is my shepherd; I shall not want. He makes me lie down in green pastures..." - Psalm 23:1-2';
+            document.getElementById('emergencyVerse').style.display = 'block';
+            document.getElementById('emergencyResponse').style.display = 'block';
+        }
+
+        function openEmergencyChat() {
+            showPage('chat');
+            document.getElementById('chatInput').value = 'I need someone to talk to...';
+        }
+
+        function newEmergencyQuote() {
+            const quotes = [
+                "This too shall pass. You are stronger than you know.",
+                "Every storm runs out of rain. Brighter days are coming.",
+                "You are loved beyond measure.",
+                "Your feelings are valid. Take all the time you need.",
+                "I believe in you, always."
+            ];
+            document.getElementById('emergencyQuote').textContent = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
+        }
+
+        // ==================== MORNING/NIGHT FUNCTIONS ====================
+        function showTimePeriod(period) {
+            APP_STATE.currentTimePeriod = period;
+            
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('morningContent').style.display = period === 'morning' ? 'block' : 'none';
+            document.getElementById('nightContent').style.display = period === 'night' ? 'block' : 'none';
+        }
+
+        function saveGratitude() {
+            const gratitude = document.getElementById('gratitudeInput').value;
+            if (gratitude) {
+                showToast('Gratitude saved! 💕');
+                document.getElementById('gratitudeInput').value = '';
             }
+        }
+
+        function triggerSurprise() {
+            const surprises = [
+                { emoji: '💌', message: 'A love note: "You are my sunshine on cloudy days! ☀️❤️"' },
+                { emoji: '📸', message: 'A memory photo: Our first meeting 💑' },
+                { emoji: '🌸', message: 'A beautiful thought: You make the world brighter just by being in it! ✨' },
+                { emoji: '✝️', message: 'Bible verse: "I have loved you with an everlasting love..." - Jeremiah 31:3' },
+                { emoji: '💕', message: 'I love you more than words can express! ❤️' }
+            ];
+            
+            const surprise = surprises[Math.floor(Math.random() * surprises.length)];
+            document.getElementById('surpriseContent').innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem;">${surprise.emoji}</div>
+                    <p>${surprise.message}</p>
+                </div>
+            `;
+        }
+
+        // ==================== BIBLE FUNCTIONS ====================
+        function newDailyVerse() {
+            const verses = [
+                { text: '"For God so loved the world that he gave his one and only Son..."', ref: '- John 3:16' },
+                { text: '"Love is patient, love is kind..."', ref: '- 1 Corinthians 13:4-7' },
+                { text: '"The Lord bless you and keep you..."', ref: '- Numbers 6:24-25' },
+                { text: '"I have loved you with an everlasting love..."', ref: '- Jeremiah 31:3' },
+                { text: '"Place me like a seal over your heart..."', ref: '- Song of Solomon 8:6' }
+            ];
+            
+            const verse = verses[Math.floor(Math.random() * verses.length)];
+            document.getElementById('dailyBibleVerse').textContent = verse.text;
+            document.getElementById('dailyBibleRef').textContent = verse.ref;
+        }
+
+        function showVerse(reference) {
+            showToast(`Showing ${reference} ✝️`);
+        }
+
+        function newFaithEncouragement() {
+            const encouragements = [
+                '"Trust in the Lord with all your heart..." - Proverbs 3:5',
+                '"The Lord is near to the brokenhearted..." - Psalm 34:18',
+                '"I can do all things through Christ..." - Philippians 4:13',
+                '"Be strong and courageous..." - Deuteronomy 31:6'
+            ];
+            document.getElementById('faithEncouragement').textContent = encouragements[Math.floor(Math.random() * encouragements.length)];
+        }
+
+        // ==================== STATS FUNCTIONS ====================
+        function updateStats() {
+            const startDate = localStorage.getItem(STORAGE_KEYS.startDate);
+            if (startDate) {
+                const days = Math.floor((new Date() - new Date(startDate)) / (1000 * 60 * 60 * 24));
+                document.getElementById('daysTogether').textContent = days;
+            }
+            
+            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
+            document.getElementById('memoriesCount').textContent = memories.length;
+            
+            const conversations = JSON.parse(localStorage.getItem(STORAGE_KEYS.conversations) || '[]');
+            document.getElementById('messagesExchanged').textContent = conversations.length;
+            
+            // Calculate streak
+            const streak = calculateStreak();
+            document.getElementById('streakDays').textContent = streak;
+        }
+
+        function calculateStreak() {
+            // Simple streak calculation based on login
+            const today = new Date().toDateString();
+            const lastLogin = localStorage.getItem('amina_last_login');
+            
+            if (lastLogin !== today) {
+                localStorage.setItem('amina_last_login', today);
+            }
+            
+            // For now, return 0 - implement proper streak logic
+            return 0;
         }
 
         // ==================== MUSIC PLAYER ====================
-        let currentlyPlaying = null;
-        let currentSongIndex = -1;
-        let songProgress = {};
+        function toggleMusic() {
+            APP_STATE.musicPlaying = !APP_STATE.musicPlaying;
+            showToast(APP_STATE.musicPlaying ? 'Music playing... 🎵' : 'Music paused');
+        }
 
-        function loadMusicPlayer() {
-            const songs = JSON.parse(localStorage.getItem(STORAGE_KEYS.songs) || '[]');
-            const container = document.getElementById('musicPlayerContainer');
-            container.innerHTML = '';
+        function closeMusic() {
+            document.getElementById('musicPlayer').style.display = 'none';
+        }
 
-            songs.forEach((song, index) => {
-                const player = document.createElement('div');
-                player.className = 'music-player';
-                player.innerHTML = `
-                    <h3 style="color: #ff6b9d; margin-bottom: 10px;">🎵 ${song.title} - ${song.artist}</h3>
-                    <p style="color: #ffd1dc; font-size: 0.9rem;">${song.note}</p>
-                    <div class="music-controls">
-                        <button class="play-btn" onclick="togglePlay(${index})" id="playBtn${index}">▶️</button>
-                        <div class="progress-bar" onclick="seekSong(event, ${index})" id="progressBar${index}">
-                            <div class="progress-fill" id="progressFill${index}"></div>
-                        </div>
-                        <span class="time-display" id="timeDisplay${index}">0:00 / 3:30</span>
-                    </div>
-                `;
-                container.appendChild(player);
+        // ==================== UTILITY FUNCTIONS ====================
+        function formatDate(timestamp) {
+            return new Date(timestamp).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
             });
         }
 
-        function togglePlay(index) {
-            const btn = document.getElementById(`playBtn${index}`);
-            
-            // Stop currently playing song
-            if (currentlyPlaying !== null && currentlyPlaying !== index) {
-                const prevBtn = document.getElementById(`playBtn${currentlyPlaying}`);
-                prevBtn.textContent = '▶️';
-                prevBtn.style.background = '#ff6b9d';
-                clearInterval(songProgress[currentlyPlaying]);
-            }
-
-            if (currentlyPlaying === index) {
-                // Pause current song
-                btn.textContent = '▶️';
-                btn.style.background = '#ff6b9d';
-                clearInterval(songProgress[index]);
-                currentlyPlaying = null;
-            } else {
-                // Play new song
-                btn.textContent = '⏸️';
-                btn.style.background = '#c06c84';
-                currentlyPlaying = index;
-                startSongProgress(index);
-            }
-        }
-
-        function startSongProgress(index) {
-            let progress = 0;
-            const duration = 210; // 3:30 in seconds
-            
-            songProgress[index] = setInterval(() => {
-                progress += 0.5;
-                const percent = (progress / duration) * 100;
-                
-                document.getElementById(`progressFill${index}`).style.width = percent + '%';
-                
-                const currentTime = Math.floor(progress);
-                const minutes = Math.floor(currentTime / 60);
-                const seconds = currentTime % 60;
-                document.getElementById(`timeDisplay${index}`).textContent = 
-                    `${minutes}:${seconds.toString().padStart(2, '0')} / 3:30`;
-
-                if (progress >= duration) {
-                    clearInterval(songProgress[index]);
-                    document.getElementById(`playBtn${index}`).textContent = '▶️';
-                    document.getElementById(`playBtn${index}`).style.background = '#ff6b9d';
-                    currentlyPlaying = null;
-                }
-            }, 500);
-        }
-
-        function seekSong(event, index) {
-            const bar = event.currentTarget;
-            const rect = bar.getBoundingClientRect();
-            const percent = ((event.clientX - rect.left) / rect.width) * 100;
-            document.getElementById(`progressFill${index}`).style.width = percent + '%';
-        }
-
-        // ==================== CHAT BOT ====================
-        const chatContext = {
-            userName: 'Yvonne',
-            favorites: {
-                food: 'sushi',
-                activities: ['traveling', 'horror movies'],
-                places: ['Tokyo', 'Paris', 'Santorini', 'Bali']
-            }
-        };
-
-        const aiResponses = {
-            greeting: [
-                "Hey there! 💕 How can I help you celebrate your amazing relationship today?",
-                "Hi! 💖 Ready to plan something special for Yvonne?",
-                "Hello! 🌹 What would you like to chat about?"
-            ],
-            dateIdeas: [
-                "How about a sushi-making class together? 🍣 You could learn to make your favorite rolls!",
-                "Plan a horror movie marathon with all her favorites, complete with cozy blankets and snacks! 🎬",
-                "Surprise her with a weekend getaway to a place on your bucket list! ✈️",
-                "Book a romantic dinner at that new sushi restaurant you've been wanting to try! 🍱",
-                "Create a scavenger hunt leading to different places that are special to you both! 💝",
-                "Plan a picnic at sunset with her favorite foods and a playlist of your songs! 🌅"
-            ],
-            travel: [
-                "Tokyo would be perfect for Yvonne! Amazing sushi AND unique experiences! 🗼🍣",
-                "Paris is always romantic - imagine strolling the streets hand in hand! 🗼💕",
-                "Bali offers both adventure and relaxation - perfect for you two! 🏝️",
-                "Santorini's sunsets would be breathtaking to share together! 🌅"
-            ],
-            movies: [
-                "If she loves The Conjuring, try 'The Conjuring 2' or 'Annabelle' for more scares! 👻",
-                "For something really intense, check out 'Midsommar' or 'The Wailing'! 😱",
-                "Classic horror: 'The Exorcist' or 'Rosemary's Baby' are must-watches! 🎃",
-                "'Train to Busan' is a great zombie thriller if you want something different! 🚂"
-            ],
-            gifts: [
-                "A personalized photo album of your memories together would be so meaningful! 📸",
-                "Plan a surprise trip to Tokyo - she'd love experiencing the sushi culture! ✈️",
-                "Custom jewelry with coordinates of your special places! 💎",
-                "A 'horror movie date night' subscription box with movie picks and snacks! 🎬",
-                "Cooking class for making sushi at home together! 🍱"
-            ],
-            love: [
-                "The best relationships grow stronger through shared adventures - keep exploring together! 💕",
-                "Quality time is the greatest gift - whether it's sushi dates or movie nights! ⏰",
-                "Your shared interests create the perfect foundation for lasting love! 💝",
-                "Keep making memories together - they're the treasures of a lifetime! 🌹"
-            ]
-        };
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const messagesDiv = document.getElementById('chatMessages');
-            const typingIndicator = document.getElementById('typingIndicator');
-            
-            if (input.value.trim() === '') return;
-
-            const userMessage = input.value.toLowerCase();
-
-            // User message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            userMsg.innerHTML = '<p>' + input.value + '</p>';
-            messagesDiv.appendChild(userMsg);
-            input.value = '';
-
-            // Show typing indicator
-            typingIndicator.classList.add('show');
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-            // Generate AI response
-            setTimeout(() => {
-                typingIndicator.classList.remove('show');
-                
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot';
-                
-                let response = generateAIResponse(userMessage);
-                
-                botMsg.innerHTML = '<p>' + response + '</p>';
-                messagesDiv.appendChild(botMsg);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }, 1500);
-        }
-
-        function generateAIResponse(message) {
-            // Simple keyword-based AI responses
-            if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-                return aiResponses.greeting[Math.floor(Math.random() * aiResponses.greeting.length)];
-            }
-            
-            if (message.includes('date') || message.includes('plan') || message.includes('idea')) {
-                return aiResponses.dateIdeas[Math.floor(Math.random() * aiResponses.dateIdeas.length)];
-            }
-            
-            if (message.includes('travel') || message.includes('trip') || message.includes('vacation')) {
-                return aiResponses.travel[Math.floor(Math.random() * aiResponses.travel.length)];
-            }
-            
-            if (message.includes('movie') || message.includes('horror') || message.includes('watch')) {
-                return aiResponses.movies[Math.floor(Math.random() * aiResponses.movies.length)];
-            }
-            
-            if (message.includes('gift') || message.includes('present') || message.includes('surprise')) {
-                return aiResponses.gifts[Math.floor(Math.random() * aiResponses.gifts.length)];
-            }
-            
-            if (message.includes('sushi')) {
-                return "Sushi is such a great shared passion! 🍣 Have you tried making it together at home? It's a fun date activity and you learn something new together! Or plan a sushi restaurant tour - visit different places and rate them! 🍱";
-            }
-
-            if (message.includes('love') || message.includes('relationship')) {
-                return aiResponses.love[Math.floor(Math.random() * aiResponses.love.length)];
-            }
-
-            // Default responses
-            const defaultResponses = [
-                "That's wonderful! Yvonne is lucky to have someone who cares so much! 💕",
-                "Tell me more! I'm here to help make your relationship even more special! 💖",
-                "I love that! What else would you like to know about? 🌹",
-                "Great question! Based on what I know about Yvonne, she'd probably love something involving travel or good food! ✈️🍣",
-                "Remember, the best gifts come from the heart. What makes Yvonne smile? 😊"
-            ];
-            
-            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-        }
-
-        // ==================== DAILY INSPIRATION ====================
-        const loveQuotes = [
-            "Yvonne, you make every adventure more beautiful just by being there. Every sunrise is brighter, every sushi roll tastes better, and every scary movie is more thrilling when I'm with you.",
-            "Your smile is my favorite view, better than any travel destination. When you laugh, the whole world lights up, and I fall in love all over again.",
-            "Every sushi date with you is a journey to happiness. It's not just about the food - it's about the conversations, the laughter, and the way we can make ordinary moments extraordinary together.",
-            "I love how you're brave enough to watch horror movies but sweet enough to hold my hand. Your strength and tenderness inspire me every day.",
-            "Traveling the world means nothing without you by my side. Every destination is just a place until we create memories there together.",
-            "You're not just my Valentine - you're my forever adventure. Every day with you is a new chapter in the greatest story ever told.",
-            "Every day with you is a new page in our love story, and I can't wait to see what adventures tomorrow brings.",
-            "Yvonne, you are my favorite hello and my hardest goodbye. Distance means nothing when someone means everything.",
-            "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.",
-            "You are my today and all of my tomorrows. Every moment spent with you is a moment I treasure.",
-            "I choose you. And I'll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you.",
-            "Together we create our own paradise - whether it's a sushi bar, a movie theater, or anywhere in the world. Home is wherever you are."
-        ];
-
-        const bibleVerses = [
-            { 
-                text: "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", 
-                ref: "1 Corinthians 13:4" 
-            },
-            { 
-                text: "Above all, love each other deeply, because love covers over a multitude of sins.", 
-                ref: "1 Peter 4:8" 
-            },
-            { 
-                text: "There is no fear in love. But perfect love drives out fear.", 
-                ref: "1 John 4:18" 
-            },
-            { 
-                text: "Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be stilled; where there is knowledge, it will pass away.", 
-                ref: "1 Corinthians 13:8" 
-            },
-            { 
-                text: "Two are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up.", 
-                ref: "Ecclesiastes 4:9-10" 
-            },
-            { 
-                text: "Place me like a seal over your heart, like a seal on your arm; for love is as strong as death.", 
-                ref: "Song of Solomon 8:6" 
-            },
-            { 
-                text: "Therefore what God has joined together, let no one separate.", 
-                ref: "Mark 10:9" 
-            },
-            { 
-                text: "And now these three remain: faith, hope and love. But the greatest of these is love.", 
-                ref: "1 Corinthians 13:13" 
-            }
-        ];
-
-        function generateNewQuote() {
-            const quote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-            const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
-            
-            document.getElementById('dailyQuote').textContent = quote;
-            document.getElementById('dailyVerse').textContent = verse.text;
-            document.getElementById('verseRef').textContent = '- ' + verse.ref;
-            
-            celebrate();
-        }
-
-        // ==================== NOTIFICATIONS ====================
-        function enableNotifications() {
-            if ('Notification' in window) {
-                Notification.requestPermission().then(permission => {
-                    if (permission === 'granted') {
-                        document.getElementById('notificationStatus').textContent = 
-                            '✅ Daily love messages enabled! You\'ll receive beautiful messages every day at 9 AM! 💕';
-                        
-                        // Show sample notification
-                        new Notification('💕 Daily Love Message', {
-                            body: 'Good morning! Here\'s your daily dose of love from your Valentine app!',
-                            icon: '❤️'
-                        });
-
-                        // Store notification preference
-                        localStorage.setItem('notifications_enabled', 'true');
-                        localStorage.setItem('notification_time', '09:00');
-                        
-                        celebrate();
-                    } else {
-                        document.getElementById('notificationStatus').textContent = 
-                            '❌ Notifications blocked. Please enable them in your browser settings.';
-                    }
-                });
-            } else {
-                document.getElementById('notificationStatus').textContent = 
-                    '💕 Notifications not supported on this device, but the love is still here!';
-            }
-        }
-
-        // Check and send daily notification
-        function checkDailyNotification() {
-            if (localStorage.getItem('notifications_enabled') === 'true') {
-                const now = new Date();
-                const lastNotification = localStorage.getItem('last_notification_date');
-                const today = now.toDateString();
-
-                if (lastNotification !== today && now.getHours() === 9) {
-                    const quote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-                    
-                    if (Notification.permission === 'granted') {
-                        new Notification('💕 Daily Love Message for Yvonne', {
-                            body: quote.substring(0, 100) + '...',
-                            icon: '❤️'
-                        });
-                        
-                        localStorage.setItem('last_notification_date', today);
-                    }
-                }
-            }
-        }
-
-        // Check for notifications every minute
-        setInterval(checkDailyNotification, 60000);
-
-        // ==================== SOCIAL SHARING ====================
-        function shareToSocial(platform, customText = '') {
-            const text = customText || `❤️ Check out this amazing Valentine's message! 💕 #ValentinesDay #Love #Yvonne`;
-            const url = window.location.href;
-
-            const shareLinks = {
-                instagram: `https://www.instagram.com/`, // Instagram doesn't support direct sharing via URL
-                tiktok: `https://www.tiktok.com/`,
-                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`,
-                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
-                whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`
-            };
-
-            if (platform === 'instagram' || platform === 'tiktok') {
-                alert(`📱 To share on ${platform}:\n\n1. Take a screenshot of this page\n2. Open ${platform}\n3. Create a new post\n4. Upload the screenshot\n5. Add your caption!\n\nSuggested caption: ${text}`);
-            } else if (shareLinks[platform]) {
-                window.open(shareLinks[platform], '_blank', 'width=600,height=400');
-            }
-        }
-
-        // ==================== STATISTICS ====================
-        function updateStats() {
-            // Calculate days together
-            const startDate = new Date(localStorage.getItem(STORAGE_KEYS.startDate));
-            const today = new Date();
-            const daysTogether = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-            
-            const memories = JSON.parse(localStorage.getItem(STORAGE_KEYS.memories) || '[]');
-            const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishes) || '[]');
-
-            // Animate counters
-            animateCounter('daysCounter', daysTogether);
-            animateCounter('memoriesCounter', memories.length);
-            animateCounter('wishesCounter', wishes.length);
-        }
-
-        function animateCounter(elementId, target) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            let current = 0;
-            const increment = Math.ceil(target / 50);
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = current;
-            }, 30);
-        }
-
-        // ==================== INITIALIZATION ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeData();
-            generateNewQuote();
-            loadMemories();
-            loadWishes();
-            loadStories();
-            loadCustomBooks();
-            loadMusicPlayer();
-            updateStats();
-
-            // Check for notification permission on load
-            if (localStorage.getItem('notifications_enabled') === 'true') {
-                document.getElementById('notificationStatus').textContent = 
-                    '✅ Daily notifications are enabled!';
-            }
-        });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('memoryModal');
-            if (event.target === modal) {
-                closeMemoryModal();
-            }
-        }
+        // Make functions globally available
+        window.showPage = showPage;
+        window.sendMessage = sendMessage;
+        window.quickReply = quickReply;
+        window.selectMood = selectMood;
+        window.saveMemory = saveMemory;
+        window.cancelAddMemory = cancelAddMemory;
+        window.viewMemory = viewMemory;
+        window.viewMemoryTimeline = viewMemoryTimeline;
+        window.addWish = addWish;
+        window.loadWishes = loadWishes;
+        window.filterWishes = filterWishes;
+        window.toggleWishStatus = toggleWishStatus;
+        window.deleteWish = deleteWish;
+        window.showPrayerTab = showPrayerTab;
+        window.savePrayer = savePrayer;
+        window.saveGratitudeEntry = saveGratitudeEntry;
+        window.saveReflection = saveReflection;
+        window.loadTimeline = loadTimeline;
+        window.unlockAchievement = unlockAchievement;
+        window.unlockVault = unlockVault;
+        window.lockVault = lockVault;
+        window.showVaultTab = showVaultTab;
+        window.saveVaultNote = saveVaultNote;
+        window.saveConfession = saveConfession;
+        window.newAffirmation = newAffirmation;
+        window.showAffirmation = showAffirmation;
+        window.newBeautyTip = newBeautyTip;
+        window.toggleLifestyle = toggleLifestyle;
+        window.emergencyComfort = emergencyComfort;
+        window.emergencyMusic = emergencyMusic;
+        window.emergencyPrayer = emergencyPrayer;
+        window.openEmergencyChat = openEmergencyChat;
+        window.newEmergencyQuote = newEmergencyQuote;
+        window.showTimePeriod = showTimePeriod;
+        window.saveGratitude = saveGratitude;
+        window.triggerSurprise = triggerSurprise;
+        window.newDailyVerse = newDailyVerse;
+        window.showVerse = showVerse;
+        window.newFaithEncouragement = newFaithEncouragement;
+        window.playMoodMusic = playMoodMusic;
+        window.verifyPIN = verifyPIN;
+        window.biometricLogin = biometricLogin;
+        window.installPWA = installPWA;
+        window.dismissPWA = dismissPWA;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.toggleMusic = toggleMusic;
+        window.closeMusic = closeMusic;
     </script>
 </body>
 </html>
