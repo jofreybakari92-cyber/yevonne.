@@ -32,33 +32,9 @@
     <!-- Sparkles -->
     <div class="sparkles" id="sparkles"></div>
 
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-screen">
-        <div class="login-card">
-            <div class="login-logo">💕</div>
-            <h1>Welcome to Yevonne</h1>
-            <p>Your personal love companion</p>
-            
-            <div id="pinForm" class="pin-form">
-                <p>Enter your PIN</p>
-                <div class="pin-inputs">
-                    <input type="password" maxlength="1" class="pin-digit" id="pin1">
-                    <input type="password" maxlength="1" class="pin-digit" id="pin2">
-                    <input type="password" maxlength="1" class="pin-digit" id="pin3">
-                    <input type="password" maxlength="1" class="pin-digit" id="pin4">
-                </div>
-                <button class="btn" onclick="verifyPIN()">Enter 💕</button>
-                <p class="login-hint">Default PIN: 1234</p>
-            </div>
-            
-            <div id="biometricBtn" style="display: none;">
-                <button class="btn" onclick="biometricLogin()">🔐 Unlock with Face ID</button>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Main App -->
-    <div id="mainApp" style="display: none;">
+    <div id="mainApp">
         <!-- Navigation -->
         <nav class="nav-bar">
             <div class="nav-content">
@@ -774,12 +750,9 @@
                 console.log('App is running as PWA');
             }
             
-            // Check for saved login state
-            const savedLogin = localStorage.getItem('yevonne_logged_in');
-            if (savedLogin === 'true') {
-                APP_STATE.isLoggedIn = true;
-                showMainApp();
-            }
+            // Show main app directly (no login)
+            APP_STATE.isLoggedIn = true;
+            showMainApp();
             
             // Register service worker
             if ('serviceWorker' in navigator) {
@@ -791,11 +764,6 @@
             // Request notification permission
             if ('Notification' in window && Notification.permission === 'default') {
                 Notification.requestPermission();
-            }
-            
-            // Check for biometric support
-            if ('FaceID' in window || (window.PublicKeyCredential && window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable)) {
-                document.getElementById('biometricBtn').style.display = 'block';
             }
             
             // Initialize data
@@ -841,67 +809,8 @@
             }
         }
 
-        // ==================== LOGIN FUNCTIONS ====================
-        function verifyPIN() {
-            const pin = document.getElementById('pin1').value +
-                       document.getElementById('pin2').value +
-                       document.getElementById('pin3').value +
-                       document.getElementById('pin4').value;
-            
-            if (pin === APP_STATE.pin) {
-                APP_STATE.isLoggedIn = true;
-                localStorage.setItem('yevonne_logged_in', 'true');
-                showMainApp();
-                showToast('Welcome to Yevonne! 💕');
-            } else {
-                showToast('Incorrect PIN. Try again.');
-                document.querySelectorAll('.pin-digit').forEach(input => input.value = '');
-                document.getElementById('pin1').focus();
-            }
-        }
-
-        async function biometricLogin() {
-            if (window.PublicKeyCredential) {
-                try {
-                    const credential = await navigator.credentials.create({
-                        publicKey: {
-                            challenge: new Uint8Array(32),
-                            rp: { name: 'Yevonne' },
-                            user: {
-                                id: new Uint8Array([1]),
-                                name: 'Yevonne',
-                                displayName: 'Yevonne'
-                            },
-                            pubKeyCredParams: [{ type: 'public-key', alg: -7 }]
-                        }
-                    });
-                    APP_STATE.isLoggedIn = true;
-                    localStorage.setItem('yevonne_logged_in', 'true');
-                    showMainApp();
-                } catch (error) {
-                    console.log('Biometric login not available:', error);
-                    showToast('Biometric login not available. Use PIN.');
-                }
-            }
-        }
-
-        // PIN input handling
-        document.querySelectorAll('.pin-digit').forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                if (e.target.value.length === 1 && index < 3) {
-                    document.querySelectorAll('.pin-digit')[index + 1].focus();
-                }
-            });
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !e.target.value && index > 0) {
-                    document.querySelectorAll('.pin-digit')[index - 1].focus();
-                }
-            });
-        });
-
+        // ==================== MAIN APP ====================
         function showMainApp() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('mainApp').style.display = 'block';
             loadAllData();
         }
 
